@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <prodotti id="1" codice="UNO" nome="Crioptiogerina" descrizione="Prodotto farmaceutico" prezzo="150" quantita="17"/>
+	<prodotti id="2" codice="DUE" nome="Pneumatici R13" descrizione="Pneumatici" prezzo="50" quantita="4"/>
+</dataset> 

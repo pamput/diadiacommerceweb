@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <clienti id="1" codice="UNO" nome="Mario Rossi" indirizzo="Via Qualcosa" partitaiva="PIVA1"/> 
+    <clienti id="3" codice="TRE" nome="Giovanni Blu" indirizzo="Via Quando" partitaiva="PIVA3"/>
+    <clienti id="4" codice="QUATTRO" nome="Claudia Celeste" indirizzo="Via Perchè" partitaiva="PIVA4"/>
+    <prodotti id="1" codice="UNO" nome="Crioptiogerina" descrizione="Prodotto farmaceutico" prezzo="150" quantita="17"/>
+	<prodotti id="2" codice="DUE" nome="Pneumatici R13" descrizione="Pneumatici" prezzo="50" quantita="4"/>
+	<prodotti id="3" codice="TRE" nome="Caramelle alla liquirizia" descrizione="Prodotto alimentare" prezzo="2" quantita="500"/>
+    <prodotti id="4" codice="QUATTRO" nome="AsusG50" descrizione="Notebook" prezzo="800" quantita="34"/>
+    <prodotti id="5" codice="CINQUE" nome="AsusG71" descrizione="Notebook" prezzo="1100" quantita="0"/>
+	<fornitori id="1" nome="ASUSTEK" indirizzo="Via Non Ricordo 23" telefono="092343212"/>
+	<fornitori id="2" nome="CARAMELLE inc" indirizzo="Via Boh 23" telefono="082342311"/>
+	<fornitori id="3" nome="ACME inc" indirizzo="Via Uhm 23" telefono="0390248902"/>
+	<fornisce idprodotto="1" idfornitore="3"/>
+	<fornisce idprodotto="2" idfornitore="3"/>
+	<fornisce idprodotto="3" idfornitore="2"/>
+	<fornisce idprodotto="4" idfornitore="1"/>
+	<ordini id="1" codice="UNO" data="2012-12-12" stato="evaso" idcliente="1"/>
+	<righeordine id="1" idordine="1" idprodotto="1" numeroriga="1" quantita="2" />
+	<righeordine id="2" idordine="1" idprodotto="2" numeroriga="2" quantita="2" />
+</dataset> 
