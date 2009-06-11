@@ -1,0 +1,56 @@
+body{
+	font-family: sans-serif;
+	background-color: #F0F8FF;
+}
+
+h3{
+	font-size: 16px;
+	background-color: #5F9EA0;
+	color: white;
+    text-align: center;
+}
+
+loggato-come{
+    font-weight: bold;
+}
+
+welcome-message{
+    font-weight: bolder;
+}
+
+menu-top{
+    text-align: left;
+}
+
+errore{
+	color: red;
+	background-color: yellow;
+	font-size: 16px;
+}
+
+form{
+	padding: 2px;
+}
+
+div.main-frame{
+
+    border-top-style: dashed;
+    border-bottom-style: dashed;
+    border-left-style: dashed;
+    border-right-style: dashed;
+    
+    width: 950px;
+    height: 600px;
+
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-color: #6a8c4a;
+    border-bottom-color: #6a8c4a;
+    border-left-color: #6a8c4a;
+    border-right-color: #6a8c4a;
+    
+    margin: 0 auto;
+}
+

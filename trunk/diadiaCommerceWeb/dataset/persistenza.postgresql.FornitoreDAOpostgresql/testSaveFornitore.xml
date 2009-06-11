@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset sequenzafornitori="10">
+	<fornitori id="1" nome="ASUSTEK" indirizzo="Via Non Ricordo 23" telefono="092343212"/>
+	<fornitori id="2" nome="CARAMELLE inc" indirizzo="Via Boh 23" telefono="082342311"/>
+	<fornitori id="3" nome="ACME inc" indirizzo="Via Uhm 23" telefono="0390248902"/>
+        <fornitori id="4" nome="Kamal" indirizzo="Via via via da qui!" telefono="123456"/>
+</dataset> 
