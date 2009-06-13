@@ -31,6 +31,7 @@ public class Controller extends org.apache.struts.tiles.TilesRequestProcessor{
         action2role.put("/richiestaInserimentoProdotto.do", "admin");
         action2role.put("/confermaInserimentoProdotto.do", "admin");
         action2role.put("/personalPage.do", "user");
+        action2role.put("/creaOrdine.do", "user");
     }
 
     @Override

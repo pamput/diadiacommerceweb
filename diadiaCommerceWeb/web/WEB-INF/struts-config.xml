@@ -30,9 +30,11 @@
         <!-- DETTAGLIO PRODOTTO -->
         <forward name="mostraDettaglioProdotto"  path="/dettaglioProdotto.jsp"/>
         <forward name="dettaglioNonDisponibile"  path="/errore.jsp"/>
-        <!-- REAGISTRATI -->
+        <!-- REGISTRATI -->
         <forward name="successoRegistrazione"  path="/riepilogoRegistrazione.jsp"/>
         <forward name="fallimentoRegistrazione"  path="/registrati.jsp"/>
+        <!-- CREA ORDINE -->
+        <forward name="richiestaCreazioneOrdine"  path="/WEB-INF/user/creazione-ordine/creaOrdine.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -50,6 +52,9 @@
         <action path="/dettaglioProdotto" type="web.action.SActionDettaglioProdotto"/>
         <!-- REGISTRATI -->
         <action path="/registrati" input="/registrati.jsp" name="RegistrazioneForm" validate="true" scope="session" type="web.action.SActionRegistrati"/>
+        <!-- CREA ORDINE -->
+        <action path="/creaOrdine" type="web.action.creazioneOrdine.SActionCreaOrdine"/>
+        <action path="/aggiungiProdotto" type="web.action.creazioneOrdine.SActionAggiungiProdotto"/>
     </action-mappings>
     
     <controller processorClass="web.Controller"/>

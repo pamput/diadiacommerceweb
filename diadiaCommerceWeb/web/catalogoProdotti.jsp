@@ -31,6 +31,7 @@
             <TD>Nome</TD>
             <TD>Codice</TD>
             <TD>Descrizione</TD>
+            <TD>Prezzo</TD>
             <TD>Quantita</TD>
         </TR>
         <%for(int i=0;i<prodotti.size();i++){
@@ -39,7 +40,11 @@
             <TD><a href='dettaglioProdotto.do?idProdotto=<%=p.getID()%>'><%=p.getNome()%></a></TD>
             <TD><%=p.getCodice()%></TD>
             <TD><%=p.getDescrizione()%></TD>
-            <TD><%=p.getQuantita()%></TD>
+            <TD><%=p.getPrezzo()%></TD>
+            <TD><%if(p.getQuantita()==0)
+                    out.println("Non Disponibile");
+                  else
+                    out.println(p.getQuantita()+"");%></TD>
         </TR>
         <%}
         session.removeAttribute("catalogoProdotti");%>

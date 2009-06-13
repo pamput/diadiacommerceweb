@@ -17,6 +17,7 @@
 	<center>
         <div class="main-frame">
 
+            <welcome-message>Benvenuto in DiaDia Commerce!</welcome-message><br>
             <% String role = "Utente anonimo";
             if(session.getAttribute("role") != null)
                 role = (String) session.getAttribute("role");
