@@ -16,6 +16,7 @@
     <%}if((request.getSession().getAttribute("role") != null)&&(request.getSession().getAttribute("role").equals("user"))){%>
         <a href=<%= response.encodeURL("./logout.do") %>><input type='Button' value='Logout'></a>
         <a href=<%= response.encodeURL("./catalogoProdotti.do") %>><input type='Button' value='Catalogo Prodotti'></a>
+        <a href=<%= response.encodeURL("./creaOrdine.do") %>><input type='Button' value='Crea Ordine'></a>
     <%}if((request.getSession().getAttribute("role") != null)&&(request.getSession().getAttribute("role").equals("admin"))){%>
         <a href=<%= response.encodeURL("./logout.do") %>><input type='Button' value='Logout'></a>
         <a href=<%= response.encodeURL("./catalogoProdotti.do") %>><input type='Button' value='Catalogo Prodotti'></a>

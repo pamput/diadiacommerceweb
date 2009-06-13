@@ -26,8 +26,10 @@
         <b>Nome:</b> <%=p.getNome()%><br>
         <b>Codice:</b> <%=p.getCodice()%><br>
         <b>Descrizione:</b> <%=p.getDescrizione()%><br>
-        <b>Quantita:</b> <%=p.getQuantita()%><br>
+        <b>Prezzo:</b> <%=p.getPrezzo()%><br>
+        <b>Quantita:</b> <%=p.getQuantita()%><br><br>
         <%session.removeAttribute("prodotto");%>
+        <a href="catalogoProdotti.do"><input type="button" value="Torna al catologo prodotti"></a>
         </div>
     </body>
 </html>

@@ -12,15 +12,10 @@
 
  <head>
   <title>DiaDia Commerce </title>
-  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-  
+  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" /> 
  </head>
 
  <body>
-     <center>
-        <welcome-message>Benvenuto in DiaDia Commerce!</welcome-message><br>
-     </center>
-
      <jsp:include page="./login.jsp" />
  </body>
 
