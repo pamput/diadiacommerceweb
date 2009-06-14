@@ -26,7 +26,7 @@
             <%int costo = 0;%>
             <h3>Creazione nuovo ordine</h3>
             Prodotti ordinati:<br><br>
-            <table border="10">
+            <table>
                 <tr>
                     <td>Nome</td>
                     <td>Codice</td>

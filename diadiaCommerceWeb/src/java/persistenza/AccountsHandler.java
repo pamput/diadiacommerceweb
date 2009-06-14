@@ -62,5 +62,9 @@ public abstract class AccountsHandler {
     //Dato un codiceCliente verifica se e effettivamente valido
     public abstract boolean codiceClienteValido(String codiceCliente) throws PersistenceException;
 
+    //Dati i dati, inserisce un nuovo account nel DB
     public abstract void addAccount(String codiceCliente, String user, String password, String role) throws PersistenceException;
+
+    //Dato un username ritorna il codice del cliente associato, in caso di esito negativo ritorna null
+    public abstract String retrieveCodiceClienteByUsername(String username) throws PersistenceException;
 }

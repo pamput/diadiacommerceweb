@@ -9,11 +9,14 @@ import web.form.LoginForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import modello.Cliente;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
 import persistenza.AccountsHandler;
+import persistenza.Facade;
 import persistenza.postgresql.AccountsHandlerpostgresql;
+import persistenza.postgresql.Facadepostgresql;
 
 /**
  *
@@ -46,8 +49,16 @@ public class SActionLogin extends org.apache.struts.action.Action {
         if(role != null){
             if(role.equals("admin"))
                 request.getSession().setAttribute("role","admin");
-            else if(role.equals("user"))
+            else if(role.equals("user")){
                 request.getSession().setAttribute("role","user");
+                //Inserisce in sessione i dati necessari per la pagina personale del cliente
+                Facade facade = new Facadepostgresql();
+                AccountsHandler acchandler = new AccountsHandlerpostgresql();
+                String codice = acchandler.retrieveCodiceClienteByUsername(loginForm.getUsername());
+                Cliente cliente = facade.getClientePerCodice(codice);
+                request.getSession().setAttribute("cliente", cliente);
+                request.getSession().setAttribute("ordini", cliente.getOrdini());
+            }
             return mapping.findForward(SUCCESS);
         }else
             return mapping.findForward(FAIL);
