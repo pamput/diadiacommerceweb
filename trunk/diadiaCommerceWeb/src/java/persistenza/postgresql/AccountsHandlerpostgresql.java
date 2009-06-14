@@ -167,4 +167,43 @@ public class AccountsHandlerpostgresql extends AccountsHandler{
 		}
         return codiceValido;
     }
+
+    //Dato un username ritorna il codice del cliente associato, in caso di esito negativo ritorna null
+    public String retrieveCodiceClienteByUsername(String username) throws PersistenceException{
+        String codiceCliente = null;
+        DataSource dataSource = new DataSource();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+        try {
+			//Connessione al DB
+			connection = dataSource.getConnection();
+			//Preparazione query
+			String query = "SELECT codice "+
+						   "FROM clienti, accounts "+
+						   "WHERE clienti.id = accounts.idcliente AND username=?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1,username);
+			//Interrogazione DB
+			result = statement.executeQuery();
+			if (result.next())
+                codiceCliente = result.getString("codice");
+		}catch (Exception e){
+			throw new PersistenceException(e.getMessage());
+		}
+		finally {
+			try {
+				//Chiusura connessione al DB
+				if (result != null)
+					result.close();
+				if (statement != null)
+					statement.close();
+				if (connection!= null)
+					connection.close();
+			} catch (Exception e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+        return codiceCliente;
+    }
 }

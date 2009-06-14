@@ -26,7 +26,7 @@
     <div class="main-frame">
     <h3>Prodotti in catalogo</h3><br>
     <center>
-    <TABLE BORDER='10'>
+    <TABLE>
         <TR>
             <TD>Nome</TD>
             <TD>Codice</TD>
