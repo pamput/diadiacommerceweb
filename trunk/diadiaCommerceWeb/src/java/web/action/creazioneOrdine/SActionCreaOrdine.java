@@ -12,6 +12,8 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
+import persistenza.Facade;
+import persistenza.postgresql.Facadepostgresql;
 
 /**
  *
@@ -21,6 +23,7 @@ public class SActionCreaOrdine extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
     private final static String SUCCESS = "richiestaCreazioneOrdine";
+    private final static String FAIL = "catalogoNonDisponibile";
     
     /**
      * This is the action called from the Struts framework.
@@ -32,10 +35,13 @@ public class SActionCreaOrdine extends org.apache.struts.action.Action {
      * @return
      */
     @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        Facade facade = new Facadepostgresql();
+        try{
+            request.getSession().setAttribute("catalogoProdotti", facade.getProdottiDisponibili());
+        }catch(Exception ex){
+            return mapping.findForward(FAIL);
+        }
         return mapping.findForward(SUCCESS);
     }
 }

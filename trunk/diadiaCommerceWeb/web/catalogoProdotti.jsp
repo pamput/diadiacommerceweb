@@ -26,7 +26,7 @@
     <div class="main-frame">
     <h3>Prodotti in catalogo</h3><br>
     <center>
-    <TABLE>
+    <table>
         <TR>
             <TD>Nome</TD>
             <TD>Codice</TD>
@@ -48,7 +48,7 @@
         </TR>
         <%}
         session.removeAttribute("catalogoProdotti");%>
-    </TABLE>
+    </table>
     </center>
     </div>
     </body>
