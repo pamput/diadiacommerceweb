@@ -4,24 +4,30 @@
 
  <head>
   <title>DiaDia Commerce Menu</title>
-  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" /> 
+  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
+        <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+        <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+        <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
  </head>
  
  <body> 
 	Menu:
-    <%if(request.getSession().getAttribute("role") == null){%>
-        <a href=<%= response.encodeURL("./login.jsp") %>><input type='Button' value='Login'></a>
-        <a href=<%= response.encodeURL("./registrati.jsp") %>><input type='Button' value='Registrati'></a>
-        <a href=<%= response.encodeURL("./catalogoProdotti.do") %>><input type='Button' value='Catalogo Prodotti'></a>
-    <%}if((request.getSession().getAttribute("role") != null)&&(request.getSession().getAttribute("role").equals("user"))){%>
-        <a href=<%= response.encodeURL("./logout.do") %>><input type='Button' value='Logout'></a>
-        <a href=<%= response.encodeURL("./catalogoProdotti.do") %>><input type='Button' value='Catalogo Prodotti'></a>
-        <a href=<%= response.encodeURL("./creaOrdine.do") %>><input type='Button' value='Crea Ordine'></a>
-    <%}if((request.getSession().getAttribute("role") != null)&&(request.getSession().getAttribute("role").equals("admin"))){%>
-        <a href=<%= response.encodeURL("./logout.do") %>><input type='Button' value='Logout'></a>
-        <a href=<%= response.encodeURL("./catalogoProdotti.do") %>><input type='Button' value='Catalogo Prodotti'></a>
-        <a href=<%= response.encodeURL("./richiestaInserimentoProdotto.do") %>><input type='Button' value='Inserisci Prodotto'></a>
-	<%}%>
+    <logic:empty name="role">
+        <html:link page="/login.jsp"><input type='Button' value='Login'></html:link>
+        <html:link page="/registrati.jsp"><input type='Button' value='Registrati'></html:link>
+        <html:link page="/catalogoProdotti.do"><input type='Button' value='Catalogo Prodotti'></html:link>
+    </logic:empty>
+    <logic:equal name="role" value="user">
+        <html:link page="/logout.do"><input type='Button' value='Logout'></html:link>
+        <html:link page="/catalogoProdotti.do"><input type='Button' value='Catalogo Prodotti'></html:link>
+        <html:link page="/creaOrdine.do"><input type='Button' value='Crea Ordine'></html:link>
+    </logic:equal>
+    <logic:equal name="role" value="admin">
+        <html:link page="/logout.do"><input type='Button' value='Logout'></html:link>
+        <html:link page="/catalogoProdotti.do"><input type='Button' value='Catalogo Prodotti'></html:link>
+        <html:link page="/richiestaInserimentoProdotto.do"><input type='Button' value='Inserisci Prodotto'></html:link>
+        <html:link page="/richiestaCreaOrdine.do"><input type='Button' value='Crea Ordine'></html:link>
+	</logic:equal>
  </body>
  
 </html>

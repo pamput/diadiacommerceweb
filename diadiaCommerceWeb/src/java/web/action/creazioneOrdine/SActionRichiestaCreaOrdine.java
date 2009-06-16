@@ -5,10 +5,10 @@
 
 package web.action.creazioneOrdine;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -16,12 +16,12 @@ import org.apache.struts.action.ActionForward;
 
 /**
  *
- * @author Kimo
+ * @author pamput
  */
-public class SActionRiepilogoOrdine extends org.apache.struts.action.Action {
+public class SActionRichiestaCreaOrdine extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String SUCCESS = "mostraRiepilogoOrdine";
+    private final static String SUCCESS = "richiestaCreazioneOrdine";
     
     /**
      * This is the action called from the Struts framework.
@@ -33,9 +33,10 @@ public class SActionRiepilogoOrdine extends org.apache.struts.action.Action {
      * @return
      */
     @Override
-    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        //TODO deve prendere dalla sessione il catalogoProdotti e le property quantitaX per generare l'oggetto ordine (e infilarlo poi in sessione)
-
+    public ActionForward execute(ActionMapping mapping, ActionForm form,
+            HttpServletRequest request, HttpServletResponse response)
+            throws Exception {
+        request.getSession().removeAttribute("ordine");
         return mapping.findForward(SUCCESS);
     }
 }
