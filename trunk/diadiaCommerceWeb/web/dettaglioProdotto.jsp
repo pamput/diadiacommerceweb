@@ -20,16 +20,15 @@
     
     <body>
         <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
-        <%Prodotto p = (Prodotto)session.getAttribute("prodotto");%>
         <div class="main-frame">
         <h3>Dettaglio Prodotto</h3><br>
-        <b>Nome:</b> <%=p.getNome()%><br>
-        <b>Codice:</b> <%=p.getCodice()%><br>
-        <b>Descrizione:</b> <%=p.getDescrizione()%><br>
-        <b>Prezzo:</b> <%=p.getPrezzo()%><br>
-        <b>Quantita:</b> <%=p.getQuantita()%><br><br>
-        <%session.removeAttribute("prodotto");%>
-        <a href="catalogoProdotti.do"><input type="button" value="Torna al catologo prodotti"></a>
+            <b>Nome:</b> <bean:write name="prodotto" property="nome" /><br>
+        <b>Codice:</b> <bean:write name="prodotto" property="codice" /><br>
+        <b>Descrizione:</b> <bean:write name="prodotto" property="descrizione" /><br>
+        <b>Prezzo:</b> <bean:write name="prodotto" property="prezzo" />€<br>
+        <b>Quantita:</b> <bean:write name="prodotto" property="quantita" /><br><br>
+        <input type="button" onclick="javascript:history.back()" value="Indietro"/>
         </div>
+        
     </body>
 </html>

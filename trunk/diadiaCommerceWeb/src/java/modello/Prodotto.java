@@ -24,6 +24,10 @@ public class Prodotto {
 	public int getID(){
 		return this.id;
 	}
+
+    public int getId(){
+		return this.id;
+	}
 	
 	public int getPrezzo(){
 		return this.prezzo;
@@ -83,5 +87,9 @@ public class Prodotto {
         hash = 97 * hash + (this.descrizione != null ? this.descrizione.hashCode() : 0);
         hash = 97 * hash + (this.nome != null ? this.nome.hashCode() : 0);
         return hash;
+    }
+
+    public String toString(){
+        return getNome() + " (" + getCodice() + ")";
     }
 }
