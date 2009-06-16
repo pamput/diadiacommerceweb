@@ -87,7 +87,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
             	statement = connection.prepareStatement(query);
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
-                statement.setInt(3,rigaOrdine.getProdotto().getID());
+                statement.setInt(3,rigaOrdine.getProdotto().getId());
                 statement.setInt(4,rigaOrdine.getID());
             }else{
 				query = "INSERT INTO righeordine " +
@@ -96,7 +96,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement = connection.prepareStatement(query);
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
-                statement.setInt(3,rigaOrdine.getProdotto().getID());
+                statement.setInt(3,rigaOrdine.getProdotto().getId());
                 statement.setInt(4,ordine.getID());
             }
 		    //Interrogazione DB
@@ -140,7 +140,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
             	statement = connection.prepareStatement(query);
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
-                statement.setInt(3,rigaOrdine.getProdotto().getID());
+                statement.setInt(3,rigaOrdine.getProdotto().getId());
                 statement.setInt(4,rigaOrdine.getID());
             }else{
 				query = "INSERT INTO righeordine " +
@@ -149,7 +149,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement = connection.prepareStatement(query);
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
-                statement.setInt(3,rigaOrdine.getProdotto().getID());
+                statement.setInt(3,rigaOrdine.getProdotto().getId());
                 statement.setInt(4,ordine.getID());
             }
 		    //Interrogazione DB

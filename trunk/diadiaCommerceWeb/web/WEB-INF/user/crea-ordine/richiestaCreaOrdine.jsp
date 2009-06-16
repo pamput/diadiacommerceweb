@@ -21,13 +21,7 @@
         <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
         <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
         
-        <%@ page import="modello.Ordine" %>
-        <%@ page import="modello.RigaOrdine, modello.Prodotto, persistenza.Facade,
-        persistenza.postgresql.Facadepostgresql" %>
-        <%@ page import="java.util.List" %>
-        <%@ page import="web.form.RigaOrdineForm" %>
-
-        
+        <%@ page import="modello.RigaOrdine, modello.Prodotto, web.form.RigaOrdineForm, java.util.List, modello.Ordine" %>
     </head>
 
 
@@ -39,8 +33,6 @@
         <div class="main-frame">
             <h3>Creazione nuovo ordine</h3>
             Prodotti ordinati:<br><br>
-
-   <%-- <html:form action="/riepilogoOrdine.do" method="POST"> --%>
 
    <html:form action="/riepilogoCreaOrdine.do" method="POST">
 
@@ -102,8 +94,7 @@
     <br>
         <html:submit property="submit" value="Conferma Ordine"/>
     </html:form>
-    <%--    <html:submit property="submit" value="Conferma Ordine"/>
-    </html:form> --%>
+
     </div>
     </body>
 </html>
