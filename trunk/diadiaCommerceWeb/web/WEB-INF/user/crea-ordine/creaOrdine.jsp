@@ -73,8 +73,7 @@
 
             <cella-corpo-catalogo class="disponibili">
                 <input type="button"  onclick="javascript:decrementaDiUno('<%= "ordine" + i %>')" value="-" />
-                <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>'
-                    value="0" size="3" styleId='<%= "ordine" + i %>' />
+                <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>' value="0" size="3" styleId='<%= "ordine" + i %>' />
                 <input type="button"  onclick="javascript:aumentaDiUno('<%= "ordine" + i %>')" value="+" />
                 <html:errors property='<%= "ordine[" + i + "]" %>'/>
             </cella-corpo-catalogo>
@@ -84,9 +83,6 @@
         <%-- Incrementa il parametro alla fine di ogni iterazione --%>
         <% i++; %>
         </logic:iterate>
-        <%
-        //TODO azione bottoni aggiungi e sottrai
-        %>
     </catalogo>
     </center>
 
