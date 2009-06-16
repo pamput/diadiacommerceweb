@@ -39,11 +39,11 @@
                 List<Ordine> ordini = (List<Ordine>)session.getAttribute("ordini");%>
             <b>Questi sono gli ordini da te effettuati:</b><br><br>
                 <table>
-                    <tr>
+                    <tr><h3>
                         <td>Codice</td>
                         <td>Data</td>
                         <td>Stato</td>
-                    </tr>
+                    </h3></tr>
                     <%for(int i=0;i<ordini.size();i++){%>
                     <tr>
                         <%

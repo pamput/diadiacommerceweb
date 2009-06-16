@@ -19,7 +19,7 @@ public class ProdottoDAOpostgresql implements ProdottoDAO {
 			prodotto.setNome(result.getString("nome"));
 			prodotto.setDescrizione(result.getString("descrizione"));
 			prodotto.setPrezzo(result.getInt("prezzo"));
-			prodotto.setID(result.getInt("id"));
+			prodotto.setId(result.getInt("id"));
 			prodotto.setQuantita(result.getInt("quantita"));
 			prodotto.setCodice(result.getString("codice"));
 		}catch(Exception ex){
@@ -217,7 +217,7 @@ public class ProdottoDAOpostgresql implements ProdottoDAO {
 						   "FROM prodotti " +
 						   "WHERE id=?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1,prodotto.getID());
+			statement.setInt(1,prodotto.getId());
 			result = statement.executeQuery();
 			if(result.next()){
 				query = "UPDATE prodotti " +
@@ -229,7 +229,7 @@ public class ProdottoDAOpostgresql implements ProdottoDAO {
                 statement.setInt(3,prodotto.getPrezzo());
                 statement.setString(4,prodotto.getCodice());
                 statement.setInt(5,prodotto.getQuantita());
-                statement.setInt(6,prodotto.getID());
+                statement.setInt(6,prodotto.getId());
             }else{
 				query = "INSERT INTO prodotti " +
 						"(nome,descrizione,prezzo,codice,quantita,id) " +

@@ -20,11 +20,6 @@ public class Prodotto {
 	public String getDescrizione() {
 		return this.descrizione;
 	}
-	
-	public int getID(){
-        //TODO eliminare questo metodo getter e il relativo setter
-		return this.id;
-	}
 
     public int getId(){
 		return this.id;
@@ -43,10 +38,6 @@ public class Prodotto {
 		this.codice = codice;
 	}
 	
-	public void setID(int id){
-		this.id = id;
-	}
-	
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
@@ -58,7 +49,11 @@ public class Prodotto {
 	public void setPrezzo(int prezzo){
 		 this.prezzo = prezzo;
 	}
-	
+
+	public void setId(int id){
+		 this.id = id;
+	}
+
 	public void setQuantita(int quantita){
 		this.quantita = quantita;
 	}
@@ -90,6 +85,7 @@ public class Prodotto {
         return hash;
     }
 
+    @Override
     public String toString(){
         return getNome() + " (" + getCodice() + ")";
     }

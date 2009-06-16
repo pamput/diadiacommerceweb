@@ -1,6 +1,5 @@
 package persistenza.postgresql;
 
-import persistenza.Facade;
 import java.util.List;
 import persistenza.*;
 import modello.*;
@@ -109,7 +108,7 @@ public class Facadepostgresql implements Facade{
 	
 	//Dati il codice di un prodotto ed il nome di un fornitore li associa
 	public void associaFornitoreProdotto(String nomeFornitore,String codiceProdotto) throws PersistenceException{
-		int idProdotto = prodottoDAO.retrieveProdottoByCodice(codiceProdotto).getID();
+		int idProdotto = prodottoDAO.retrieveProdottoByCodice(codiceProdotto).getId();
 		int idFornitore = fornitoreDAO.retrieveFornitoreByNome(nomeFornitore).getID();
 		fornitoreDAO.associaFornitoreProdotto(idProdotto, idFornitore);
 	}
