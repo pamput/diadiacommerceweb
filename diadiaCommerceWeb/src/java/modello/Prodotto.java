@@ -22,6 +22,7 @@ public class Prodotto {
 	}
 	
 	public int getID(){
+        //TODO eliminare questo metodo getter e il relativo setter
 		return this.id;
 	}
 
