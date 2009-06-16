@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package web.action.creazioneOrdine;
+package web.action.creaOrdine;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +16,7 @@ import org.apache.struts.action.ActionForward;
  *
  * @author Kimo
  */
-public class SActionConfermaOrdine extends org.apache.struts.action.Action {
+public class SActionCreaOrdine extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
     private final static String SUCCESS = "success";

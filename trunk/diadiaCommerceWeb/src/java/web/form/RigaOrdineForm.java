@@ -22,6 +22,7 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
 
     private String ordine;
     private HashMap<Integer, String> mappaOrdini;
+    private HashMap<Integer, String> mappaCodici;
 
     public String getOrdine() {
         return ordine;
@@ -43,6 +44,7 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
         mappaOrdini.put(index, value);
     }
 
+
     @Override
     /**
      *  Il validate sarà solo eseguito sulla lista in quatno non è previsto l'utilizzo sul singolo oggetto String ordine
@@ -60,7 +62,7 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
             try{
                 v = Integer.parseInt(mappaOrdini.get(k));
                 if (v < 0) {
-                    errors.add("ordine[" + k + "]", new ActionMessage("errors.negative", "L' ordine"));
+                    errors.add("ordine[" + k + "]", new ActionMessage("errors.negative", "L'ordine"));
                 }
             } catch(NumberFormatException e) {
                 errors.add("ordine[" + k + "]", new ActionMessage("errors.integer", "L'ordine "));

@@ -3,16 +3,20 @@
  * and open the template in the editor.
  */
 
-package web.action.creazioneOrdine;
+package web.action.creaOrdine;
 
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modello.Cliente;
 import modello.Ordine;
 import modello.Prodotto;
+import modello.RigaOrdine;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
@@ -22,10 +26,10 @@ import web.form.RigaOrdineForm;
  *
  * @author Kimo
  */
-public class SActionRiepilogoOrdine extends org.apache.struts.action.Action {
+public class SActionRiepilogoCreaOrdine extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String SUCCESS = "mostraRiepilogoOrdine";
+    private final static String SUCCESS = "riepilogoCreaOrdine";
     
     /**
      * This is the action called from the Struts framework.
@@ -59,6 +63,29 @@ public class SActionRiepilogoOrdine extends org.apache.struts.action.Action {
         //Aggiunge l'ordine alla sessione
         request.getSession().setAttribute("ordine", ordine);
         */
+
+        LinkedList<RigaOrdine> listaRigaOrdine = new LinkedList<RigaOrdine>();
+
+        RigaOrdineForm rigaOrdineForm = (RigaOrdineForm) form;
+        List listaProdottiDisponibili = (List) request.getSession().getAttribute("catalogoProdottiDisponibili");
+
+        ListIterator iterator = listaProdottiDisponibili.listIterator();
+
+        RigaOrdine nuovaRigaOrdine;
+
+        while(iterator.hasNext()){
+            nuovaRigaOrdine = new RigaOrdine();
+            nuovaRigaOrdine.setProdotto((Prodotto) iterator.next());
+            int indice = iterator.nextIndex() - 1;
+            int quantità = Integer.parseInt(rigaOrdineForm.getOrdine(indice));
+            nuovaRigaOrdine.setQuantita(quantità);
+            listaRigaOrdine.addLast(nuovaRigaOrdine);
+        }
+        
+        request.getSession().setAttribute("listaRighaOrdine", listaRigaOrdine);
+
+
+
         return mapping.findForward(SUCCESS);
     }
 }

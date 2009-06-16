@@ -33,13 +33,19 @@
         <menu-top><jsp:include page="/menu.jsp"/></menu-top><br><br>
         <div class="main-frame">
             <h3>Creazione nuovo ordine</h3>
-            Prodotti ordinati:<br><br>
+            Riepilogo del nuovo ordine:<br><br>
+
+                <logic:iterate id="riga" name="listaRighaOrdine">
+
+                </logic:iterate>
 
 
 
 <% RigaOrdineForm form = (RigaOrdineForm) session.getAttribute("RigaOrdineForm"); %>
 
-riepilogo: <%=form %>
+
+riepilogo: <%=form %><br><br>
+<%=(List) session.getAttribute("listaRighaOrdine") %>
 <br>
 <input type="button" onclick="javascript:history.back()" value="Indietro"/>
     </div>
