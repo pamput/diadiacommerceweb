@@ -35,9 +35,9 @@
         <forward name="successoRegistrazione"  path="/riepilogoRegistrazione.jsp"/>
         <forward name="fallimentoRegistrazione"  path="/registrati.jsp"/>
         <!-- CREA ORDINE -->
-        <forward name="richiestaCreazioneOrdine"  path="/WEB-INF/user/crea-ordine/creaOrdine.jsp"/>
-        <forward name="mostraRiepilogoOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoOrdine.jsp"/>
-        <forward name="riepilogoOrdine"  path="/WEB-INF/user/riepilogoOrdine.jsp"/>
+        <forward name="richiestaCreaOrdine"  path="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp"/>
+        <forward name="riepilogoCreaOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp"/>
+        <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -56,8 +56,9 @@
         <!-- REGISTRATI -->
         <action path="/registrati" input="/registrati.jsp" name="RegistrazioneForm" validate="true" scope="session" type="web.action.SActionRegistrati"/>
         <!-- CREA ORDINE -->
-        <action path="/richiestaCreaOrdine" type="web.action.creazioneOrdine.SActionRichiestaCreaOrdine"/>
-        <action path="/riepilogoOrdine" input="/WEB-INF/user/crea-ordine/creaOrdine.jsp" validate="true" name="RigaOrdineForm" scope="session" type="web.action.creazioneOrdine.SActionRiepilogoOrdine"/>
+        <action path="/richiestaCreaOrdine" type="web.action.creaOrdine.SActionRichiestaCreaOrdine"/>
+        <action path="/riepilogoCreaOrdine" input="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp" validate="true" name="RigaOrdineForm" scope="session" type="web.action.creaOrdine.SActionRiepilogoCreaOrdine"/>
+        <action path="/creaOrdine" input="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp" type="web.action.creaOrdine.SActionCreaOrdine"/>
 
     </action-mappings>
 

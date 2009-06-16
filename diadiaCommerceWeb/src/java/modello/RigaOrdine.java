@@ -40,6 +40,10 @@ public class RigaOrdine {
 		this.numeroRiga = numeroRiga;
 	}
 
+    public String toString(){
+        return getProdotto() + " x " + getQuantita();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (obj == null) {
