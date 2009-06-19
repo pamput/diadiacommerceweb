@@ -47,6 +47,8 @@ public class SActionLogin extends org.apache.struts.action.Action {
             return mapping.findForward(FAIL);
         }
         if(role != null){
+            //Pulisce la sessione da eventuali residui precedenti
+            request.getSession().invalidate();
             if(role.equals("admin"))
                 request.getSession().setAttribute("role","admin");
             else if(role.equals("user")){
@@ -59,6 +61,8 @@ public class SActionLogin extends org.apache.struts.action.Action {
                 request.getSession().setAttribute("cliente", cliente);
                 request.getSession().setAttribute("ordini", cliente.getOrdini());
             }
+            //Rimuove il form di login dalla sessione
+            request.getSession().removeAttribute("LoginForm");
             return mapping.findForward(SUCCESS);
         }else
             return mapping.findForward(FAIL);
