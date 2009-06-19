@@ -40,6 +40,8 @@
         <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
         <!-- HOMEPAGE -->
         <forward name="mostraHomepage" path="/WEB-INF/user/personalPage.jsp"/>
+        <!-- FORNITORI -->
+        <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -63,6 +65,8 @@
         <action path="/creaOrdine" input="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp" type="web.action.creaOrdine.SActionCreaOrdine"/>
         <!-- HOMEPAGE -->
         <action path="/homepage" type="web.action.SActionHomepage"/>
+        <!-- FORNITORI -->
+        <action path="/richiestaFornitori" type="web.action.SActionRichiestaFornitori"/>
     </action-mappings>
 
     <controller processorClass="web.Controller"/>

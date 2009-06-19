@@ -109,7 +109,7 @@ public class Facadepostgresql implements Facade{
 	//Dati il codice di un prodotto ed il nome di un fornitore li associa
 	public void associaFornitoreProdotto(String nomeFornitore,String codiceProdotto) throws PersistenceException{
 		int idProdotto = prodottoDAO.retrieveProdottoByCodice(codiceProdotto).getId();
-		int idFornitore = fornitoreDAO.retrieveFornitoreByNome(nomeFornitore).getID();
+		int idFornitore = fornitoreDAO.retrieveFornitoreByNome(nomeFornitore).getId();
 		fornitoreDAO.associaFornitoreProdotto(idProdotto, idFornitore);
 	}
 }

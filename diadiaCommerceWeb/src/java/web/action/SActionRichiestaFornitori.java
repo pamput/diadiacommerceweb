@@ -5,10 +5,11 @@
 
 package web.action;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modello.Prodotto;
+import modello.Fornitore;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
@@ -19,11 +20,10 @@ import persistenza.postgresql.Facadepostgresql;
  *
  * @author Kimo
  */
-public class SActionDettaglioProdotto extends org.apache.struts.action.Action {
+public class SActionRichiestaFornitori extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String SUCCESS = "mostraDettaglioProdotto";
-    private final static String FAIL = "dettaglioNonDisponibile";
+    private final static String SUCCESS = "mostraFornitori";
     
     /**
      * This is the action called from the Struts framework.
@@ -36,13 +36,12 @@ public class SActionDettaglioProdotto extends org.apache.struts.action.Action {
      */
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        try{
-            Facade facade = new Facadepostgresql();
-            Prodotto prodotto = facade.getProdottoPerId(Integer.parseInt(request.getParameter("idProdotto")));
-            request.getSession().setAttribute("prodotto",prodotto);
-            return mapping.findForward(SUCCESS);
-        }catch(Exception ex){
-            return mapping.findForward(FAIL);
-        }
+        //Inserisce la lista dei fornitori in sessione
+        Facade facade = new Facadepostgresql();
+        String codiceProdotto = (String)request.getSession().getAttribute("codiceProdotto");
+        List<Fornitore> fornitori = facade.getFornitoriPerCodiceProdotto(codiceProdotto);
+        request.getSession().setAttribute("fornitori", fornitori);
+
+        return mapping.findForward(SUCCESS);
     }
 }

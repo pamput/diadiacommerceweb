@@ -15,7 +15,7 @@ public class FornitoreProxy extends Fornitore {
 		ProdottoDAOpostgresql prodottoDAO = new ProdottoDAOpostgresql();
 		try{
 			prodottoDAO = new ProdottoDAOpostgresql();
-			listaProdotti = prodottoDAO.retrieveProdottiByIDFornitore(this.getID());
+			listaProdotti = prodottoDAO.retrieveProdottiByIDFornitore(this.getId());
 		}catch (PersistenceException e) {
 			System.out.println(e.getMessage());
 			listaProdotti = null;

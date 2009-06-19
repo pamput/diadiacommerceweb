@@ -35,7 +35,9 @@
                 <cella-intestazione-catalogo class="descrizione">Descrizione</cella-intestazione-catalogo>
                 <cella-intestazione-catalogo class="prezzo">Prezzo</cella-intestazione-catalogo>
                 <cella-intestazione-catalogo class="disponibili">Disponibili</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="ordinati">Ordinati</cella-intestazione-catalogo>
+                <logic:equal name="role" value="admin">
+                    <cella-intestazione-catalogo class="fornitori">Fornitori</cella-intestazione-catalogo>
+                </logic:equal>
             </intestazione-catalogo>
 
             <!--Inizializza a 0 il contarore del logic iterate-->
@@ -51,6 +53,13 @@
                     <cella-corpo-catalogo class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-catalogo>
                     <cella-corpo-catalogo class="prezzo"><bean:write name="prodotto" property="prezzo" /></cella-corpo-catalogo>
                     <cella-corpo-catalogo class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-catalogo>
+                    
+                    <!--Se sta visualizzando la pagina un amministratore aggiunge la possibilta di mostrare i fornitori del prodotto-->
+                    <logic:equal name="role" value="admin">
+                        <cella-corpo-catalogo class="fornitori">
+                            <html:link page="/richiestaFornitori.do" paramId="codiceProdotto" paramName="prodotto" paramProperty="codice">Visualizza</html:link>
+                        </cella-corpo-catalogo>
+                    </logic:equal>
                 </corpo-catalogo>
 
                 <!--Incrementa il contatore del logic iterate-->

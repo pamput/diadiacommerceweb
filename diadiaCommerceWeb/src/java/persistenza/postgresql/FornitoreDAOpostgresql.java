@@ -18,7 +18,7 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
 		Fornitore fornitore = new FornitoreProxy();
 		try{
 			fornitore.setNome(result.getString("nome"));
-			fornitore.setID(result.getInt("id"));
+			fornitore.setId(result.getInt("id"));
 			fornitore.setTelefono(result.getString("telefono"));
 			fornitore.setIndirizzo(result.getString("indirizzo"));
 		}catch(Exception ex){
@@ -153,7 +153,7 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
                     "FROM fornitori " +
                     "WHERE id=?";
             statement = connection.prepareStatement(query);
-            statement.setInt(1, fornitore.getID());
+            statement.setInt(1, fornitore.getId());
             result = statement.executeQuery();
             //Se trova un risultato vuol dire che il fornitore � gi� presente
             boolean exists = false;
@@ -172,7 +172,7 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
             statement.setString(3, fornitore.getTelefono());
 
             if(exists)
-                statement.setInt(4, fornitore.getID());
+                statement.setInt(4, fornitore.getId());
             
             //Salva nel DB
             statement.executeUpdate();
