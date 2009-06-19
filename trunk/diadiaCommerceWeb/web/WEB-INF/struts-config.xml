@@ -38,6 +38,8 @@
         <forward name="richiestaCreaOrdine"  path="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp"/>
         <forward name="riepilogoCreaOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp"/>
         <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
+        <!-- HOMEPAGE -->
+        <forward name="mostraHomepage" path="/WEB-INF/user/personalPage.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -59,7 +61,8 @@
         <action path="/richiestaCreaOrdine" type="web.action.creaOrdine.SActionRichiestaCreaOrdine"/>
         <action path="/riepilogoCreaOrdine" input="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp" validate="true" name="RigaOrdineForm" scope="session" type="web.action.creaOrdine.SActionRiepilogoCreaOrdine"/>
         <action path="/creaOrdine" input="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp" type="web.action.creaOrdine.SActionCreaOrdine"/>
-
+        <!-- HOMEPAGE -->
+        <action path="/homepage" type="web.action.SActionHomepage"/>
     </action-mappings>
 
     <controller processorClass="web.Controller"/>

@@ -19,6 +19,7 @@
     </logic:empty>
     <logic:equal name="role" value="user">
         <html:link page="/logout.do"><input type='Button' value='Logout'></html:link>
+        <html:link page="/homepage.do"><input type='Button' value='Homepage'></html:link>
         <html:link page="/catalogoProdotti.do"><input type='Button' value='Catalogo Prodotti'></html:link>
         <html:link page="/richiestaCreaOrdine.do"><input type='Button' value='Crea Ordine'></html:link>
     </logic:equal>
