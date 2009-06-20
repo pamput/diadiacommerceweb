@@ -157,7 +157,7 @@ INSERT INTO accounts (idcliente,username,password,tipo)
 VALUES (
 1,
 'Mario',
-'7bd16211f6505bbcb61a3e45560e51ae',
+'7fd9a94f143d2bd19e98b3844a45d3ac',
 'user'
 );
 

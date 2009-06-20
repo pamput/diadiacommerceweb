@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modello.Cliente;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import persistenza.AccountsHandler;
 import persistenza.Facade;
 import persistenza.postgresql.AccountsHandlerpostgresql;
@@ -25,7 +28,8 @@ import persistenza.postgresql.Facadepostgresql;
 public class SActionLogin extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String SUCCESS = "loginValido";
+    private final static String USER = "loginValido";
+    private final static String ADMIN = "loginAdminValido";
     private final static String FAIL = "loginNonValido";
     /**
      * This is the action called from the Struts framework.
@@ -41,17 +45,22 @@ public class SActionLogin extends org.apache.struts.action.Action {
         LoginForm loginForm = (LoginForm)form;
         AccountsHandler auth = new AccountsHandlerpostgresql();
         String role = null;
+        String forwardString = FAIL;
         try{
             role = auth.authenticate(loginForm.getUsername(),loginForm.getUsername());
         }catch(Exception ex){
-            return mapping.findForward(FAIL);
+            return mapping.findForward(forwardString);
         }
         if(role != null){
             //Pulisce la sessione da eventuali residui precedenti
             request.getSession().invalidate();
-            if(role.equals("admin"))
+            if(role.equals("admin")){
                 request.getSession().setAttribute("role","admin");
-            else if(role.equals("user")){
+                //Inserisce in sessione i dati necessari per la pagina personale dell'admin
+                Facade facade = new Facadepostgresql();
+                request.getSession().setAttribute("ordini",facade.getOrdini());
+                forwardString = ADMIN;
+            }else if(role.equals("user")){
                 request.getSession().setAttribute("role","user");
                 //Inserisce in sessione i dati necessari per la pagina personale del cliente
                 Facade facade = new Facadepostgresql();
@@ -60,11 +69,16 @@ public class SActionLogin extends org.apache.struts.action.Action {
                 Cliente cliente = facade.getClientePerCodice(codice);
                 request.getSession().setAttribute("cliente", cliente);
                 request.getSession().setAttribute("ordini", cliente.getOrdini());
+                forwardString = USER;
             }
             //Rimuove il form di login dalla sessione
             request.getSession().removeAttribute("LoginForm");
-            return mapping.findForward(SUCCESS);
-        }else
-            return mapping.findForward(FAIL);
+        }else{
+            ActionMessages errors = new ActionMessages();
+            errors.add("username", new ActionMessage("errors.invalidlogin"));
+            this.saveErrors(request, errors);
         }
+        return mapping.findForward(forwardString);
+        }
+
 }

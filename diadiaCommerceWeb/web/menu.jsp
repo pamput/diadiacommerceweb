@@ -25,9 +25,9 @@
     </logic:equal>
     <logic:equal name="role" value="admin">
         <html:link page="/logout.do"><input type='Button' value='Logout'></html:link>
+        <html:link page="/homepage.do"><input type='Button' value='Homepage'></html:link>
         <html:link page="/catalogoProdotti.do"><input type='Button' value='Catalogo Prodotti'></html:link>
         <html:link page="/richiestaInserimentoProdotto.do"><input type='Button' value='Inserisci Prodotto'></html:link>
-        <html:link page="/richiestaCreaOrdine.do"><input type='Button' value='Crea Ordine'></html:link>
 	</logic:equal>
  </body>
  

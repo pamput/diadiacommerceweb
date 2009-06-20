@@ -23,6 +23,7 @@
         <forward name="richiestaInserimentoProdotto" path="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp"/>
         <!-- LOGIN-LOGOUT-->
         <forward name="loginValido"  path="/WEB-INF/user/personalPage.jsp"/>
+        <forward name="loginAdminValido" path="/WEB-INF/admin/adminPage.jsp"/>
         <forward name="loginNonValido" path="/login.jsp"/>
         <forward name="logout"  path="/index.jsp"/>
         <!-- CATALOGO PRODOTTI -->
