@@ -8,7 +8,7 @@ package web.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modello.Cliente;
+import modello.Ordine;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
@@ -19,11 +19,10 @@ import persistenza.postgresql.Facadepostgresql;
  *
  * @author Kimo
  */
-public class SActionHomepage extends org.apache.struts.action.Action {
+public class SActionConfermaEvadiOrdine extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String USER = "mostraHomepage";
-    private final static String ADMIN = "mostraAdminpage";
+    private final static String SUCCESS = "mostraConfermaEvadiOrdine";
     
     /**
      * This is the action called from the Struts framework.
@@ -36,19 +35,8 @@ public class SActionHomepage extends org.apache.struts.action.Action {
      */
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String forwardString = null;
-        if(request.getSession().getAttribute("role").equals("user")){
-            if(request.getSession().getAttribute("cliente") != null){
-                Cliente cliente = (Cliente)request.getSession().getAttribute("cliente");
-                request.getSession().setAttribute("ordini", cliente.getOrdini());
-            }
-            forwardString = USER;
-        }else if(request.getSession().getAttribute("role").equals("admin")){
-            //Inserisce in sessione i dati necessari per la pagina personale dell'admin
-            Facade facade = new Facadepostgresql();
-            request.getSession().setAttribute("ordini",facade.getOrdini());
-            forwardString = ADMIN;
-        }
-        return mapping.findForward(forwardString);
+        Facade facade = new Facadepostgresql();
+        facade.evadiOrdine((Ordine)request.getSession().getAttribute("ordine"));
+        return mapping.findForward(SUCCESS);
     }
 }

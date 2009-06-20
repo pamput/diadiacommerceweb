@@ -19,23 +19,19 @@
         <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
         <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
-        <%Cliente cliente = null;
-        if(session.getAttribute("cliente")!= null){
-                 cliente = (Cliente)session.getAttribute("cliente");%>
-        <title>Homepage di <%=cliente.getNome()%></title><%}%>
+        <title>Homepage di <bean:write name="cliente" property="nome" /></title>
     </head>
     
     <body>
         <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
         <div class="main-frame">
-           <%if(cliente != null){%>
-           <h3>Benvenuto nella tua Homepage <%=cliente.getNome()%>!</h3>
+           <h3>Benvenuto nella tua Homepage <bean:write name="cliente" property="nome" />!</h3>
 
-           <b>Riepilogo dati Personali:</b><br><br>
-                <b>Nome:</b><%=cliente.getNome()%><br>
-                <b>Codice:</b><%=cliente.getCodice()%><br>
-                <b>P.Iva:</b><%=cliente.getPartitaiva()%><br>
-                <b>Indirizzo:</b><%=cliente.getNome()%><br>
+           <b>Riepilogo dati personali:</b><br><br>
+                <b>Nome:</b><bean:write name="cliente" property="nome" /><br>
+                <b>Codice:</b><bean:write name="cliente" property="codice" /><br>
+                <b>P.Iva:</b><bean:write name="cliente" property="partitaiva" /><br>
+                <b>Indirizzo:</b><bean:write name="cliente" property="indirizzo" /><br>
             <br><br>
 
 
@@ -61,8 +57,7 @@
 
             </catalogo>
             <!--Rimuove la lista degli ordini dalla sessione-->
-            <%session.removeAttribute("ordini");
-           }%>
+            <%session.removeAttribute("ordini");%>
         </div>
     </body>
 </html>

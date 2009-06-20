@@ -117,6 +117,78 @@ VALUES (
 6
 );
 
+INSERT INTO ordini (id,idcliente,data,stato,codice)
+VALUES (
+1,
+1,
+'25/01/09',
+'evaso',
+'ORD1'
+);
+
+INSERT INTO ordini (id,idcliente,data,stato,codice)
+VALUES (
+2,
+2,
+'12/12/09',
+'chiuso',
+'ORD2'
+);
+
+INSERT INTO ordini (id,idcliente,data,stato,codice)
+VALUES (
+3,
+1,
+'09/09/09',
+'chiuso',
+'ORD3'
+);
+
+INSERT INTO righeordine (id,idprodotto,idordine,numeroriga,quantita)
+VALUES (
+1,
+2,
+1,
+1,
+3
+);
+
+INSERT INTO righeordine (id,idprodotto,idordine,numeroriga,quantita)
+VALUES (
+2,
+4,
+1,
+2,
+4
+);
+
+INSERT INTO righeordine (id,idprodotto,idordine,numeroriga,quantita)
+VALUES (
+3,
+3,
+2,
+1,
+3
+);
+
+INSERT INTO righeordine (id,idprodotto,idordine,numeroriga,quantita)
+VALUES (
+4,
+5,
+2,
+2,
+7
+);
+
+INSERT INTO righeordine (id,idprodotto,idordine,numeroriga,quantita)
+VALUES (
+5,
+2,
+3,
+1,
+1
+);
+
 INSERT INTO fornisce (idfornitore,idprodotto)
 VALUES (
 2,
