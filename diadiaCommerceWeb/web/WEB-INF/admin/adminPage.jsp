@@ -32,6 +32,7 @@
             <catalogo>
                 <intestazione-catalogo>
                         <cella-intestazione-catalogo class="codice">Codice</cella-intestazione-catalogo>
+                        <cella-intestazione-catalogo class="cliente">Cliente</cella-intestazione-catalogo>
                         <cella-intestazione-catalogo class="data">Data</cella-intestazione-catalogo>
                         <cella-intestazione-catalogo class="stato">Stato</cella-intestazione-catalogo>
                         <cella-intestazione-catalogo class="evadi">Evadi</cella-intestazione-catalogo>
@@ -44,18 +45,23 @@
                     <!--Scrive il corpo della lista di ordini-->
                     <corpo-catalogo>
                         <cella-corpo-catalogo class="codice"><bean:write name="ordine" property="codice" /></cella-corpo-catalogo>
+                        <cella-corpo-catalogo class="cliente"><bean:write name="ordine" property="cliente" /></cella-corpo-catalogo>
                         <cella-corpo-catalogo class="data"><bean:write name="ordine" property="data" /></cella-corpo-catalogo>
                         <cella-corpo-catalogo class="stato"><bean:write name="ordine" property="stato" /></cella-corpo-catalogo>
                         <cella-corpo-catalogo class="stato">
                             <logic:equal value="chiuso" name="ordine" property="stato">
-                                <html:link page="richiestaEvasioneOrdine.do" paramId="codiceOrdine" name="ordine" property="codice">Evadi</html:link>
+                                <html:link page="/richiestaEvadiOrdine.do" paramId="codiceOrdine" paramName="ordine" paramProperty="codice">Evadi</html:link>
                             </logic:equal>
                         </cella-corpo-catalogo>
                     </corpo-catalogo>
+
+                    <!--Incrementa il contatore del logic iterate-->
+                    <% i++; %>
                 </logic:iterate>
 
             </catalogo>
-            </center>
+            </center><br><br>
+            
             <!--Rimuove la lista degli ordini dalla sessione-->
             <%session.removeAttribute("ordini");%>
         </div>

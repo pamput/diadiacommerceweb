@@ -22,8 +22,8 @@
         <forward name="mostraRiepilogoInserimentoProdotto"  path="/WEB-INF/admin/inserimento-prodotto/riepilogoInserimentoProdotto.jsp"/>
         <forward name="richiestaInserimentoProdotto" path="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp"/>
         <!-- LOGIN-LOGOUT-->
-        <forward name="loginValido"  path="/WEB-INF/user/personalPage.jsp"/>
-        <forward name="loginAdminValido" path="/WEB-INF/admin/adminPage.jsp"/>
+        <forward name="mostraHomepage"  path="/WEB-INF/user/personalPage.jsp"/>
+        <forward name="mostraAdminpage" path="/WEB-INF/admin/adminPage.jsp"/>
         <forward name="loginNonValido" path="/login.jsp"/>
         <forward name="logout"  path="/index.jsp"/>
         <!-- CATALOGO PRODOTTI -->
@@ -39,10 +39,11 @@
         <forward name="richiestaCreaOrdine"  path="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp"/>
         <forward name="riepilogoCreaOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp"/>
         <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
-        <!-- HOMEPAGE -->
-        <forward name="mostraHomepage" path="/WEB-INF/user/personalPage.jsp"/>
         <!-- FORNITORI -->
         <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
+        <!-- EVADI ORDINE -->
+        <forward name="mostraRiepilogoEvadiOrdine" path="/WEB-INF/admin/riepilogoEvadiOrdine.jsp"/>
+        <forward name="mostraConfermaEvadiOrdine" path="/WEB-INF/admin/confermaEvadiOrdine.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -68,6 +69,9 @@
         <action path="/homepage" type="web.action.SActionHomepage"/>
         <!-- FORNITORI -->
         <action path="/richiestaFornitori" type="web.action.SActionRichiestaFornitori"/>
+        <!-- EVADI ORDINE -->
+        <action path="/richiestaEvadiOrdine" type="web.action.SActionRichiestaEvadiOrdine"/>
+        <action path="/confermaEvadiOrdine" type="web.action.SActionConfermaEvadiOrdine"/>
     </action-mappings>
 
     <controller processorClass="web.Controller"/>

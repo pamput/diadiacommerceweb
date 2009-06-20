@@ -65,6 +65,11 @@ public class Cliente {
 	}
 
     @Override
+    public String toString(){
+        return this.getNome();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;

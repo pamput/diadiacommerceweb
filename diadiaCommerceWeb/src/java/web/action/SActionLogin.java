@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modello.Cliente;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
@@ -28,8 +27,8 @@ import persistenza.postgresql.Facadepostgresql;
 public class SActionLogin extends org.apache.struts.action.Action {
     
     /* forward name="success" path="" */
-    private final static String USER = "loginValido";
-    private final static String ADMIN = "loginAdminValido";
+    private final static String USER = "mostraHomepage";
+    private final static String ADMIN = "mostraAdminpage";
     private final static String FAIL = "loginNonValido";
     /**
      * This is the action called from the Struts framework.
@@ -47,7 +46,7 @@ public class SActionLogin extends org.apache.struts.action.Action {
         String role = null;
         String forwardString = FAIL;
         try{
-            role = auth.authenticate(loginForm.getUsername(),loginForm.getUsername());
+            role = auth.authenticate(loginForm.getUsername(),loginForm.getPassword());
         }catch(Exception ex){
             return mapping.findForward(forwardString);
         }
