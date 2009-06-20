@@ -28,6 +28,9 @@
             Password:
             <html:password name="RegistrazioneForm" property="password"/>
             <html:errors property="password"/><br><br>
+            Conferma Password:
+            <html:password name="RegistrazioneForm" property="passwordconf"/>
+            <html:errors property="passwordconf"/><br><br>
             Codice Cliente:
             <html:text name="RegistrazioneForm" property="codicecliente"/>
             <html:errors property="codicecliente"/><br><br>

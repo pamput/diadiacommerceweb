@@ -30,8 +30,8 @@
             <catalogo>
                 <intestazione-catalogo>
                     <cella-intestazione-catalogo class="nome">Nome</cella-intestazione-catalogo>
-                    <cella-intestazione-catalogo class="indirizzo">Codice</cella-intestazione-catalogo>
-                    <cella-intestazione-catalogo class="telefono">Descrizione</cella-intestazione-catalogo>
+                    <cella-intestazione-catalogo class="indirizzo">Indirizzo</cella-intestazione-catalogo>
+                    <cella-intestazione-catalogo class="telefono">Telefono</cella-intestazione-catalogo>
                 </intestazione-catalogo>
 
             <!--Inizializza a 0 il contarore del logic iterate-->

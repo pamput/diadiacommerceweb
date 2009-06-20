@@ -26,5 +26,6 @@
             Password: <%=form.getPassword() %><br><br>
             Codice Cliente: <%=form.getCodicecliente() %><br><br>
         </div>
+        <%session.removeAttribute("RegistrazioneForm");%>
     </body>
 </html>

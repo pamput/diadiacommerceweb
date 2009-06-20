@@ -22,6 +22,7 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
     
     private String username;
     private String password;
+    private String passwordconf;
     private String codicecliente;
 
     public String getPassword() {
@@ -72,6 +73,13 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
         if (getPassword().length() < 6)
             errors.add("password", new ActionMessage("errors.minlength", 6));
 
+        if (getPasswordconf() == null)
+            errors.add("passwordconf", new ActionMessage("errors.required"));
+        if (getPasswordconf().length() < 6)
+            errors.add("passwordconf", new ActionMessage("errors.minlength", 6));
+        if (!getPasswordconf().equals(getPassword()))
+            errors.add("passwordconf", new ActionMessage("errors.differentpasswords"));
+
         if((getCodicecliente() == null)||(getCodicecliente().length() < 1))
             errors.add("codicecliente", new ActionMessage("errors.required"));
         //Controlli persistenza
@@ -104,6 +112,20 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
      */
     public void setCodicecliente(String codicecliente) {
         this.codicecliente = codicecliente;
+    }
+
+    /**
+     * @return the passwordconf
+     */
+    public String getPasswordconf() {
+        return passwordconf;
+    }
+
+    /**
+     * @param passwordconf the passwordconf to set
+     */
+    public void setPasswordconf(String passwordconf) {
+        this.passwordconf = passwordconf;
     }
 }
 

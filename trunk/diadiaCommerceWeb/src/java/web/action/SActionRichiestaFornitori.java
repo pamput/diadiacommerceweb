@@ -38,7 +38,7 @@ public class SActionRichiestaFornitori extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         //Inserisce la lista dei fornitori in sessione
         Facade facade = new Facadepostgresql();
-        String codiceProdotto = (String)request.getSession().getAttribute("codiceProdotto");
+        String codiceProdotto = (String)request.getParameter("codiceProdotto");
         List<Fornitore> fornitori = facade.getFornitoriPerCodiceProdotto(codiceProdotto);
         request.getSession().setAttribute("fornitori", fornitori);
 
