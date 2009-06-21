@@ -9,7 +9,7 @@
     <!--Specifica i form presenti nella webapp, effettuando la mappatura tra nome e l'effettiva classe ActionForm-->
     <form-beans>
         <form-bean name="LoginForm" type="web.form.LoginForm"/>
-        <form-bean name="InserimentoProdottoForm" type="web.form.InserimentoProdottoForm"/>
+        <form-bean name="InserisciProdottoForm" type="web.form.InserisciProdottoForm"/>
         <form-bean name="RegistrazioneForm" type="web.form.RegistrazioneForm"/>
         <form-bean name="RigaOrdineForm" type="web.form.RigaOrdineForm"/>
     </form-beans>
@@ -17,58 +17,74 @@
     <!--Effettua il mapping tra la stringa ritornata dall'esecuzione di una Action e la pagina jsp da visualizzare-->
     <global-forwards>
         <!-- INSERIMENTO PRODOTTO -->
-        <forward name="successoInserimentoProdotto"  path="/WEB-INF/admin/inserimento-prodotto/confermaInserimentoProdotto.jsp"/>
-        <forward name="erroreInserimentoProdotto"  path="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp"/>
-        <forward name="mostraRiepilogoInserimentoProdotto"  path="/WEB-INF/admin/inserimento-prodotto/riepilogoInserimentoProdotto.jsp"/>
-        <forward name="richiestaInserimentoProdotto" path="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp"/>
+        <forward name="richiestaInserisciProdotto" path="/WEB-INF/admin/inserisci-prodotto/richiestaInserisciProdotto.jsp"/>
+        <forward name="riepilogoInserisciProdotto" path="/WEB-INF/admin/inserisci-prodotto/riepilogoInserisciProdotto.jsp"/>
+        <forward name="inserisciProdotto"  path="/WEB-INF/admin/inserisci-prodotto/inserisciProdotto.jsp"/>
+        <forward name="erroreInserisciProdotto"  path="/WEB-INF/admin/inserisci-prodotto/richiestaInserisciProdotto.jsp"/>
+
         <!-- LOGIN-LOGOUT-->
         <forward name="mostraHomepage"  path="/WEB-INF/user/personalPage.jsp"/>
         <forward name="mostraAdminpage" path="/WEB-INF/admin/adminPage.jsp"/>
         <forward name="loginNonValido" path="/login.jsp"/>
         <forward name="logout"  path="/index.jsp"/>
+
         <!-- CATALOGO PRODOTTI -->
         <forward name="mostraCatalogoProdotti"  path="/catalogoProdotti.jsp"/>
         <forward name="catalogoNonDisponibile"  path="/error.jsp"/>
+
         <!-- DETTAGLIO PRODOTTO -->
         <forward name="mostraDettaglioProdotto"  path="/dettaglioProdotto.jsp"/>
         <forward name="dettaglioNonDisponibile"  path="/errore.jsp"/>
+
         <!-- REGISTRATI -->
         <forward name="successoRegistrazione"  path="/riepilogoRegistrazione.jsp"/>
         <forward name="fallimentoRegistrazione"  path="/registrati.jsp"/>
+
         <!-- CREA ORDINE -->
         <forward name="richiestaCreaOrdine"  path="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp"/>
         <forward name="riepilogoCreaOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp"/>
         <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
+
         <!-- FORNITORI -->
         <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
-        <!-- EVADI ORDINE -->
-        <forward name="mostraRiepilogoEvadiOrdine" path="/WEB-INF/admin/riepilogoEvadiOrdine.jsp"/>
-        <forward name="mostraConfermaEvadiOrdine" path="/WEB-INF/admin/confermaEvadiOrdine.jsp"/>
+
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
     <action-mappings>
         <!-- INSERIMENTO PRODOTTO -->
-        <action path="/riepilogoInserimentoProdotto" type="web.action.inserimentoProdotto.SActionRiepilogoInserimentoProdotto" input="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp" name="InserimentoProdottoForm"  scope="session"/>
-        <action path="/confermaInserimentoProdotto" type="web.action.inserimentoProdotto.SActionInserimentoProdotto" input="/WEB-INF/admin/inserimento-prodotto/inserimentoProdotto.jsp" validate='true' name="InserimentoProdottoForm" scope="session"/>
-        <action path="/richiestaInserimentoProdotto" type="web.action.inserimentoProdotto.SActionRichiestaInserimentoProdotto"/>
+        <action path="/richiestaInserisciProdotto" type="web.action.inserisciProdotto.SActionRichiestaInserisciProdotto" />
+            
+        <action path="/riepilogoInserisciProdotto" type="web.action.inserisciProdotto.SActionRiepilogoInserisciProdotto" 
+            input="/WEB-INF/admin/inserisci-prodotto/richiestaInserisciProdotto.jsp" name="InserisciProdottoForm" validate="true" />
+
+        <action path="/inserisciProdotto" type="web.action.inserisciProdotto.SActionInserisciProdotto"
+            input="/WEB-INF/admin/inserisci-prodotto/inserisciProdotto.jsp" validate='true' name="InserisciProdottoForm" />
+        
         <!-- LOGIN-LOGOUT-->
         <action path="/logout" type="web.action.SActionLogout"/>
         <action path="/login" input="/login.jsp" name="LoginForm" validate="true" scope="session" type="web.action.SActionLogin"/>
+
         <!-- CATALOGO PRODOTTI -->
         <action path="/catalogoProdotti" type="web.action.SActionCatalogoProdotti"/>
+
         <!-- DETTAGLIO PRODOTTO -->
         <action path="/dettaglioProdotto" type="web.action.SActionDettaglioProdotto"/>
+
         <!-- REGISTRATI -->
         <action path="/registrati" input="/registrati.jsp" name="RegistrazioneForm" validate="true" scope="session" type="web.action.SActionRegistrati"/>
+
         <!-- CREA ORDINE -->
         <action path="/richiestaCreaOrdine" type="web.action.creaOrdine.SActionRichiestaCreaOrdine"/>
         <action path="/riepilogoCreaOrdine" input="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp" validate="true" name="RigaOrdineForm" scope="session" type="web.action.creaOrdine.SActionRiepilogoCreaOrdine"/>
         <action path="/creaOrdine" input="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp" type="web.action.creaOrdine.SActionCreaOrdine"/>
+
         <!-- HOMEPAGE -->
         <action path="/homepage" type="web.action.SActionHomepage"/>
+
         <!-- FORNITORI -->
         <action path="/richiestaFornitori" type="web.action.SActionRichiestaFornitori"/>
+
         <!-- EVADI ORDINE -->
         <action path="/richiestaEvadiOrdine" type="web.action.SActionRichiestaEvadiOrdine"/>
         <action path="/confermaEvadiOrdine" type="web.action.SActionConfermaEvadiOrdine"/>

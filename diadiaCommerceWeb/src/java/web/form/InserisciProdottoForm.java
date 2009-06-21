@@ -17,7 +17,7 @@ import persistenza.postgresql.Facadepostgresql;
  *
  * @author Kimo
  */
-public class InserimentoProdottoForm extends org.apache.struts.action.ActionForm {
+public class InserisciProdottoForm extends org.apache.struts.action.ActionForm {
     
     private String nome;
     private String descrizione;
@@ -25,7 +25,7 @@ public class InserimentoProdottoForm extends org.apache.struts.action.ActionForm
     private int prezzo;
     private int quantita;
 
-    public InserimentoProdottoForm() {
+    public InserisciProdottoForm() {
         super();
     }
 
