@@ -7,9 +7,11 @@ package web.form;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
+import modello.Prodotto;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
@@ -22,7 +24,6 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
 
     private String ordine;
     private HashMap<Integer, String> mappaOrdini;
-    private HashMap<Integer, String> mappaCodici;
 
     public String getOrdine() {
         return ordine;
@@ -55,7 +56,6 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
 
         Iterator<Integer> iterator = keyset.iterator();
 
-
         while(iterator.hasNext()){
             int k = iterator.next();        //Inizializziamo la chiave
             int v = 0;      //Inizializziamo il valore
@@ -64,12 +64,16 @@ public class RigaOrdineForm extends org.apache.struts.action.ActionForm {
                 if (v < 0) {
                     errors.add("ordine[" + k + "]", new ActionMessage("errors.negative", "L'ordine"));
                 }
+
+                List<Prodotto> catalogo = (List<Prodotto>)request.getSession().getAttribute("catalogoProdottiDisponibili");
+                int quantitaDisponibile = catalogo.get(k).getQuantita();
+                if (v > quantitaDisponibile)
+                    errors.add("ordine[" + k + "]", new ActionMessage("errors.morethandisp"));
+
             } catch(NumberFormatException e) {
                 errors.add("ordine[" + k + "]", new ActionMessage("errors.integer", "L'ordine "));
             }
         }
-
-
 
         return errors;
     }

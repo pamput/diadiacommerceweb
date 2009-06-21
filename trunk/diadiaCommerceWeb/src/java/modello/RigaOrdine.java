@@ -10,10 +10,6 @@ public class RigaOrdine {
 	public Prodotto getProdotto () {
 		return this.prodotto;
 	}
-	
-	public int getID(){
-		return this.id;
-	}
 
     public int getId(){
 		return this.id;
@@ -31,10 +27,6 @@ public class RigaOrdine {
 	public void setProdotto(Prodotto prodotto) {
 		this.prodotto = prodotto;
 	}
-	
-	public void setID(int id){
-		this.id = id;
-	}
 
     public void setId(int id){
 		this.id = id;
@@ -48,6 +40,7 @@ public class RigaOrdine {
 		this.numeroRiga = numeroRiga;
 	}
 
+    @Override
     public String toString(){
         return getProdotto() + " x " + getQuantita();
     }

@@ -19,10 +19,6 @@ public class Ordine {
 	public Date getData() {
 		return this.data;
 	}
-	
-	public int getID(){
-		return id;
-	}
 
     public int getId(){
 		return id;
@@ -55,10 +51,6 @@ public class Ordine {
 	
 	public  void setStato(String stato) {
 		 this.stato = stato;
-	}
-	
-	public void setID(int id){
-		this.id = id;
 	}
 
     public void setId(int id){

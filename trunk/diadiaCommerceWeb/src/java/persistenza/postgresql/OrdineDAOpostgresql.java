@@ -18,7 +18,7 @@ public class OrdineDAOpostgresql implements OrdineDAO{
 		Ordine ordine = new OrdineProxy();
 		try{
 			ordine.setCodice(result.getString("codice"));
-			ordine.setID(result.getInt("id"));
+			ordine.setId(result.getInt("id"));
 			ordine.setData(result.getDate("data"));
 			ordine.setStato(result.getString("stato"));
 			ordine.setCliente(new ClienteDAOpostgresql().retrieveClienteByID(result.getInt("idcliente")));
@@ -196,24 +196,24 @@ public class OrdineDAOpostgresql implements OrdineDAO{
 						   "FROM ordini " +
 						   "WHERE id=?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1,ordine.getID());
+			statement.setInt(1,ordine.getId());
 			result = statement.executeQuery();
 			if(result.next()){
 				query = "UPDATE ordini " +
 						"SET idcliente=?,data=?,stato=?,codice=? " +
 						"WHERE id=?";
                 statement = connection.prepareStatement(query);
-                statement.setInt(1,ordine.getCliente().getID());
+                statement.setInt(1,ordine.getCliente().getId());
                 statement.setDate(2,ordine.getData());
                 statement.setString(3,ordine.getStato());
                 statement.setString(4,ordine.getCodice());
-                statement.setInt(5,ordine.getID());
+                statement.setInt(5,ordine.getId());
             }else{
 				query = "INSERT INTO ordini " +
 						"(idcliente,data,stato,codice,id) " +
 						"VALUES (?,?,?,'ORD' || NEXTVAL('sequenzacodiceordine'),NEXTVAL('sequenzaordini'))";
                 statement = connection.prepareStatement(query);
-                statement.setInt(1,ordine.getCliente().getID());
+                statement.setInt(1,ordine.getCliente().getId());
                 statement.setDate(2,ordine.getData());
                 statement.setString(3,ordine.getStato());
             }
@@ -223,7 +223,7 @@ public class OrdineDAOpostgresql implements OrdineDAO{
             //Interrogazione DB
 			successcount += statement.executeUpdate();
             int id = dataSource.getLastSequenceValue("sequenzaordini");
-            ordine.setID(id);
+            ordine.setId(id);
 
             for(int i = 0;i < ordine.getRigheOrdine().size();i++){
                 successcount += rigaOrdineDAO.saveRigaOrdine(ordine.getRigheOrdine().get(i), ordine, connection);
@@ -317,7 +317,7 @@ public class OrdineDAOpostgresql implements OrdineDAO{
             }
 
             updateOrd = connection.prepareStatement("UPDATE ordini SET stato = 'evaso' where id=?");
-            updateOrd.setInt(1, ordine.getID());
+            updateOrd.setInt(1, ordine.getId());
 
             int nProd = updateProd.executeUpdate();
             int nOrd  = updateOrd.executeUpdate();

@@ -13,7 +13,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
 	public RigaOrdine getRigaOrdineFromResultSet(ResultSet result) throws PersistenceException{
 		RigaOrdine riga = new RigaOrdine();
 		try{
-			riga.setID(result.getInt("id"));
+			riga.setId(result.getInt("id"));
 			riga.setNumeroRiga(result.getInt("numeroriga"));
 			riga.setQuantita(result.getInt("quantita"));
 			Prodotto prodotto = (new ProdottoDAOpostgresql()).retrieveProdottoByID(result.getInt("idprodotto"));
@@ -78,7 +78,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
 						   "FROM righeordine " +
 						   "WHERE id=?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1,rigaOrdine.getID());
+			statement.setInt(1,rigaOrdine.getId());
 			result = statement.executeQuery();
 			if(result.next()){
 				query = "UPDATE righeordine " +
@@ -88,7 +88,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
                 statement.setInt(3,rigaOrdine.getProdotto().getId());
-                statement.setInt(4,rigaOrdine.getID());
+                statement.setInt(4,rigaOrdine.getId());
             }else{
 				query = "INSERT INTO righeordine " +
 						"(numeroriga,quantita,idprodotto,idordine,id) " +
@@ -97,7 +97,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
                 statement.setInt(3,rigaOrdine.getProdotto().getId());
-                statement.setInt(4,ordine.getID());
+                statement.setInt(4,ordine.getId());
             }
 		    //Interrogazione DB
 			statement.executeUpdate();
@@ -131,7 +131,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
 						   "FROM righeordine " +
 						   "WHERE id=?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1,rigaOrdine.getID());
+			statement.setInt(1,rigaOrdine.getId());
 			result = statement.executeQuery();
 			if(result.next()){
 				query = "UPDATE righeordine " +
@@ -141,7 +141,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
                 statement.setInt(3,rigaOrdine.getProdotto().getId());
-                statement.setInt(4,rigaOrdine.getID());
+                statement.setInt(4,rigaOrdine.getId());
             }else{
 				query = "INSERT INTO righeordine " +
 						"(numeroriga,quantita,idprodotto,idordine,id) " +
@@ -150,7 +150,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
                 statement.setInt(1,rigaOrdine.getNumeroRiga());
                 statement.setInt(2,rigaOrdine.getQuantita());
                 statement.setInt(3,rigaOrdine.getProdotto().getId());
-                statement.setInt(4,ordine.getID());
+                statement.setInt(4,ordine.getId());
             }
 		    //Interrogazione DB
 			success = statement.executeUpdate();
