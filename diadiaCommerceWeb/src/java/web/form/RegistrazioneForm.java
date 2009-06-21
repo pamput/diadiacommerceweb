@@ -96,6 +96,7 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
 
         if((getCodicecliente() == null)||(getCodicecliente().length() < 1))
             errors.add("codicecliente", new ActionMessage("errors.required"));
+
         //Controlli persistenza
         AccountsHandler handler = new AccountsHandlerpostgresql();
         try{
@@ -104,9 +105,10 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
         }catch(Exception ex){
             errors.add("codicecliente", new ActionMessage("errors.notvalid"));
         }
+
         try{
             if(handler.usernamePresente(getUsername()))
-                errors.add("username", new ActionMessage("errors.alreadyused"));
+                errors.add("username", new ActionMessage("errors.alreadyused","username"));
         }catch(Exception ex){
             errors.add("username", new ActionMessage("errors.notvalid"));
         }

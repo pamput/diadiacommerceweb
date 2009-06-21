@@ -19,6 +19,7 @@ import persistenza.PersistenceException;
  */
 public class AccountsHandlerpostgresql extends AccountsHandler{
 
+    //Dati i dati, inserisce un nuovo account nel DB
     public void addAccount(String codiceCliente,String user, String password, String role) throws PersistenceException {
         DataSource dataSource = new DataSource();
         Connection connection = null;
@@ -31,7 +32,7 @@ public class AccountsHandlerpostgresql extends AccountsHandler{
             statement = connection.prepareStatement("INSERT INTO accounts " +
                     "(idcliente, username, password, tipo) " +
                     "VALUES (?,?,?,?);");
-            statement.setInt(1, cliente.getID());
+            statement.setInt(1, cliente.getId());
             statement.setString(2, user);
             statement.setString(3, string2md5(password));
             statement.setString(4, role);
@@ -92,6 +93,7 @@ public class AccountsHandlerpostgresql extends AccountsHandler{
         return role;
     }
 
+    //Dato un username verifica se e gia presente nel DB
     public boolean usernamePresente(String username) throws PersistenceException{
         boolean usernamePresente = false;
         DataSource dataSource = new DataSource();
@@ -130,6 +132,7 @@ public class AccountsHandlerpostgresql extends AccountsHandler{
         return usernamePresente;
     }
 
+    //Dato un codiceCliente verifica se e effettivamente valido
     public boolean codiceClienteValido(String codiceCliente) throws PersistenceException{
         boolean codiceValido = false;
         DataSource dataSource = new DataSource();
@@ -140,15 +143,26 @@ public class AccountsHandlerpostgresql extends AccountsHandler{
 			//Connessione al DB
 			connection = dataSource.getConnection();
 			//Preparazione query
-			String query = "SELECT * "+
+			String query = "SELECT id "+
 						   "FROM clienti "+
 						   "WHERE codice=?";
 			statement = connection.prepareStatement(query);
 			statement.setString(1,codiceCliente);
 			//Interrogazione DB
 			result = statement.executeQuery();
-			if (result.next())
-                codiceValido = true;
+			//Verifica se il codice specificato corrisponde effettivamente ad un cliente
+            if (result.next()){
+                //Verifica che non esista un account gia collegato all'utente specificato
+                int idCliente = result.getInt("id");
+                query = "SELECT * "+
+						"FROM accounts "+
+						"WHERE idcliente=?";
+                statement = connection.prepareStatement(query);
+                statement.setInt(1,idCliente);
+                result = statement.executeQuery();
+                if (!result.next())
+                    codiceValido = true;
+            }
 		}catch (Exception e){
 			throw new PersistenceException(e.getMessage());
 		}

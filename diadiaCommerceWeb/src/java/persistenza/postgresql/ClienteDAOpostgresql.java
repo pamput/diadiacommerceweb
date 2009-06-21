@@ -18,7 +18,7 @@ public class ClienteDAOpostgresql implements ClienteDAO {
 		Cliente cliente = new ClienteProxy();
 		try{
 			cliente.setNome(result.getString("nome"));
-			cliente.setID(result.getInt("id"));
+			cliente.setId(result.getInt("id"));
 			cliente.setPartitaiva(result.getString("partitaiva"));
 			cliente.setIndirizzo(result.getString("indirizzo"));
 			cliente.setCodice(result.getString("codice"));
@@ -156,7 +156,7 @@ public class ClienteDAOpostgresql implements ClienteDAO {
 						   "FROM clienti " +
 						   "WHERE id=?";
 			statement = connection.prepareStatement(query);
-			statement.setInt(1,cliente.getID());
+			statement.setInt(1,cliente.getId());
 			result = statement.executeQuery();
             boolean exists = false;
 			if(result.next()){
@@ -175,7 +175,7 @@ public class ClienteDAOpostgresql implements ClienteDAO {
             statement.setString(3,cliente.getCodice());
             statement.setString(4,cliente.getPartitaiva());
             if(exists)
-                statement.setInt(5,cliente.getID());
+                statement.setInt(5,cliente.getId());
 		    //Interrogazione DB
 			statement.executeUpdate();
 		}catch(Exception ex){

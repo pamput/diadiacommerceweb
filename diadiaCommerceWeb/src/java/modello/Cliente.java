@@ -19,7 +19,7 @@ public class Cliente {
 		return this.nome;
 	}
 	
-	public int getID(){
+	public int getId(){
 		return this.id;
 	}
 	
@@ -52,7 +52,7 @@ public class Cliente {
 		 this. indirizzo = indirizzo;
 	}
 	
-	public void setID(int id){
+	public void setId(int id){
 		this.id = id;
 	}
 	

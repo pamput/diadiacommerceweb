@@ -3,7 +3,6 @@ package persistenza;
 import modello.*;
 import java.util.List;
 
-import persistenza.PersistenceException;
 
 public interface Facade {
 	

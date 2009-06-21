@@ -83,7 +83,7 @@ public class Facadepostgresql implements Facade{
 	
 	//Ritorna la lista degli ordini effettuati da un cliente
 	public List<Ordine> getOrdiniPerCliente(Cliente cliente) throws PersistenceException{
-		return ordineDAO.retrieveOrdineByIDCliente(cliente.getID());
+		return ordineDAO.retrieveOrdineByIDCliente(cliente.getId());
 	}
 
     //Aggiunge una riga ordine ad un ordine

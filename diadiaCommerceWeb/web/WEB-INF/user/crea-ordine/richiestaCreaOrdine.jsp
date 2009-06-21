@@ -78,8 +78,8 @@
                 <input type="button"  onclick="javascript:decrementaDiUno('<%= "ordine" + i %>')" value="-" />
                 <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>' size="2" styleId='<%= "ordine" + i %>' />
                 <input type="button"  onclick="javascript:aumentaDiUno('<%= "ordine" + i %>')" value="+" />
-                
             </cella-corpo-catalogo>
+
         </corpo-catalogo>
 
         <%-- Incrementa il parametro alla fine di ogni iterazione --%>
