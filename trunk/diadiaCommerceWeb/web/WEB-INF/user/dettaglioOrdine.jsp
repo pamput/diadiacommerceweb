@@ -1,6 +1,6 @@
-<%--
-    Document   : creaOrdine
-    Created on : 15-giu-2009, 17.27.43
+<%-- 
+    Document   : dettaglioOrdine
+    Created on : 21-giu-2009, 8.00.26
     Author     : pamput
 --%>
 
@@ -8,35 +8,29 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
 
- <html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Creazione Nuovo Ordine</title>
         <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
         <%@ page language="java" %>
+        <%@ page import="modello.Cliente,modello.Ordine" %>
 
         <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
         <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
         <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
-        <%@ page import="modello.Ordine" %>
-        <%@ page import="modello.RigaOrdine, modello.Prodotto, persistenza.Facade,
-        persistenza.postgresql.Facadepostgresql" %>
-        <%@ page import="java.util.List" %>
-        <%@ page import="web.form.RigaOrdineForm" %>
-
-
+        <title>Homepage di <bean:write name="cliente" property="nome" /></title>
     </head>
 
-
     <body>
-        <menu-top><jsp:include page="/menu.jsp"/></menu-top><br><br>
+        <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
         <div class="main-frame">
-            <h3>Creazione nuovo ordine</h3>
-            Riepilogo del nuovo ordine:<br><br>
+           <h3>Dettagli ordine</h3>
+
+
 
     <center>
-                
+
         <catalogo>
             <intestazione-catalogo>
                 <cella-intestazione-catalogo class="nome">Nome</cella-intestazione-catalogo>
@@ -48,7 +42,7 @@
 
             </intestazione-catalogo>
 
-            <logic:iterate id="riga" name="listaRigaOrdine">
+                        <logic:iterate id="riga" name="listaDettaglioOrdine">
                 <corpo-catalogo>
                     <cella-corpo-catalogo class="nome"><html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="riga" paramProperty="prodotto.id">
                         <bean:write name="riga" property="prodotto.nome" /></html:link>
@@ -66,12 +60,10 @@
                 </corpo-catalogo>
             </logic:iterate>
 
+
         </catalogo>
+        <input type="button" onclick="javascript:history.back()" value="Indietro"/>
 
-        <br>
-            <html:link action="creaOrdine.do"><input type="button" value="Conferma l'ordine"/></html:link>
-            <input type="button" onclick="javascript:history.back()" value="Indietro"/>
-
-    </div>
+        </div>
     </body>
 </html>

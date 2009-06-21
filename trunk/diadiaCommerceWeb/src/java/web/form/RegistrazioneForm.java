@@ -41,6 +41,20 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
         this.username = user;
     }
 
+        /**
+     * @return the passwordconf
+     */
+    public String getPasswordconf() {
+        return passwordconf;
+    }
+
+    /**
+     * @param passwordconf the passwordconf to set
+     */
+    public void setPasswordconf(String passwordconf) {
+        this.passwordconf = passwordconf;
+    }
+
 
     /**
      *
@@ -114,18 +128,6 @@ public class RegistrazioneForm extends org.apache.struts.action.ActionForm {
         this.codicecliente = codicecliente;
     }
 
-    /**
-     * @return the passwordconf
-     */
-    public String getPasswordconf() {
-        return passwordconf;
-    }
 
-    /**
-     * @param passwordconf the passwordconf to set
-     */
-    public void setPasswordconf(String passwordconf) {
-        this.passwordconf = passwordconf;
-    }
 }
 

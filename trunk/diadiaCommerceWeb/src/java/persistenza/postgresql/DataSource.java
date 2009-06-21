@@ -21,4 +21,41 @@ public class DataSource {
 		}
 		return connection;
 	}
+
+    public int getLastSequenceValue(String label) throws PersistenceException{
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet result = null;
+        int i;
+		try{
+			//Connessione al DB
+			connection = getConnection();
+			//Preparazione query
+			String query = "SELECT last_value FROM sequenzaordini";
+			statement = connection.prepareStatement(query);
+            //statement.setString(1, label);
+		    //Interrogazione DB
+			result = statement.executeQuery();
+
+            result.next();
+            i = result.getInt("last_value");
+
+		}catch(Exception ex){
+			throw new PersistenceException(ex.getMessage());
+		}
+		finally {
+			try {
+				//Chiusura connessione al DB
+				if (result != null)
+					result.close();
+				if (statement != null)
+					statement.close();
+				if (connection!= null)
+					connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+        return i;
+    }
 }

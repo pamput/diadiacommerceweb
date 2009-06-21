@@ -69,13 +69,14 @@
             </cella-corpo-catalogo>
             <cella-corpo-catalogo class="codice"><bean:write name="prodotto" property="codice" /></cella-corpo-catalogo>
             <cella-corpo-catalogo class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-catalogo>
-            <cella-corpo-catalogo class="prezzo"><bean:write name="prodotto" property="prezzo" /></cella-corpo-catalogo>
+            <cella-corpo-catalogo class="prezzo"><bean:write name="prodotto" property="prezzo" />
+                <bean:message key="text.moneyvalue"/></cella-corpo-catalogo>
             <cella-corpo-catalogo class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-catalogo>
 
             <!-- cella del numero degli ordini -->
-            <cella-corpo-catalogo class="disponibili">
+            <cella-corpo-catalogo class="ordine">
                 <input type="button"  onclick="javascript:decrementaDiUno('<%= "ordine" + i %>')" value="-" />
-                <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>' size="3" styleId='<%= "ordine" + i %>' />
+                <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>' size="2" styleId='<%= "ordine" + i %>' />
                 <input type="button"  onclick="javascript:aumentaDiUno('<%= "ordine" + i %>')" value="+" />
                 
             </cella-corpo-catalogo>
@@ -89,9 +90,7 @@
 
     <br>
     <br>
-    
-    <br>
-    <br>
+
         <html:submit property="submit" value="Conferma Ordine"/>
     </html:form>
 

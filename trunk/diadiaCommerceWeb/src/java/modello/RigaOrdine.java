@@ -14,6 +14,10 @@ public class RigaOrdine {
 	public int getID(){
 		return this.id;
 	}
+
+    public int getId(){
+		return this.id;
+	}
 	
 	public int getQuantita() {
 		return this.quantita;
@@ -29,6 +33,10 @@ public class RigaOrdine {
 	}
 	
 	public void setID(int id){
+		this.id = id;
+	}
+
+    public void setId(int id){
 		this.id = id;
 	}
 	

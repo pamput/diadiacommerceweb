@@ -46,7 +46,7 @@ public class SActionLogin extends org.apache.struts.action.Action {
         String role = null;
         String forwardString = FAIL;
         try{
-            role = auth.authenticate(loginForm.getUsername(),loginForm.getPassword());
+            role = auth.authenticate(loginForm.getUsername(), loginForm.getPassword());
         }catch(Exception ex){
             return mapping.findForward(forwardString);
         }

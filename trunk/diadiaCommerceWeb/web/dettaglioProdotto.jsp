@@ -25,7 +25,8 @@
             <b>Nome:</b> <bean:write name="prodotto" property="nome" /><br>
         <b>Codice:</b> <bean:write name="prodotto" property="codice" /><br>
         <b>Descrizione:</b> <bean:write name="prodotto" property="descrizione" /><br>
-        <b>Prezzo:</b> <bean:write name="prodotto" property="prezzo" />€<br>
+        <b>Prezzo:</b> <bean:write name="prodotto" property="prezzo" />
+            <bean:message key="text.moneyvalue"/><br>
         <b>Quantita:</b> <bean:write name="prodotto" property="quantita" /><br><br>
         <input type="button" onclick="javascript:history.back()" value="Indietro"/>
         </div>

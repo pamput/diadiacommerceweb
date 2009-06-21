@@ -21,9 +21,9 @@
 
     </global>
 
-    <!--<formset>
+    <formset>
 
-         An example form 
+        <!-- An example form -->
         <form name="logonForm">
             <field
                 property="username"
@@ -41,17 +41,17 @@
             </field>
         </form>
 
-    </formset>-->
+    </formset>
 
-    <!-- An example formset for another locale 
+    <!-- An example formset for another locale -->
     <formset language="fr">
 
         <constant>
             <constant-name>postalCode</constant-name>
             <constant-value>^[0-9a-zA-Z]*$</constant-value>
-        </constant>-->
+        </constant>
 
-        <!-- An example form 
+        <!-- An example form -->
         <form name="logonForm">
             <field
                 property="username"
@@ -69,6 +69,6 @@
             </field>
         </form>
 
-   </formset>-->
+   </formset>
 
 </form-validation>

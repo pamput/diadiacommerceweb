@@ -213,20 +213,24 @@ public class OrdineDAOpostgresql implements OrdineDAO{
             }else{
 				query = "INSERT INTO ordini " +
 						"(idcliente,data,stato,codice,id) " +
-						"VALUES (?,?,?,?,NEXTVAL('sequenzaordini'))";
+						"VALUES (?,?,?,'ORD' || NEXTVAL('sequenzacodiceordine'),NEXTVAL('sequenzaordini'))";
                 statement = connection.prepareStatement(query);
                 statement.setInt(1,ordine.getCliente().getID());
                 statement.setDate(2,ordine.getData());
                 statement.setString(3,ordine.getStato());
-                statement.setString(4,ordine.getCodice());
             }
             RigaOrdineDAOpostgresql rigaOrdineDAO = new RigaOrdineDAOpostgresql();
             int successcount = 0;
-            for(int i = 0;i < ordine.getRigheOrdine().size();i++){
-                successcount += rigaOrdineDAO.saveRigaOrdine(ordine.getRigheOrdine().get(i),ordine,connection);
-            }
-		    //Interrogazione DB
+
+            //Interrogazione DB
 			successcount += statement.executeUpdate();
+            int id = dataSource.getLastSequenceValue("sequenzacodiceordine");
+            ordine.setID(id);
+
+            for(int i = 0;i < ordine.getRigheOrdine().size();i++){
+                successcount += rigaOrdineDAO.saveRigaOrdine(ordine.getRigheOrdine().get(i), ordine, connection);
+            }
+
             if(successcount != 1+ordine.getRigheOrdine().size())
                 connection.rollback();
             else
@@ -344,4 +348,6 @@ public class OrdineDAOpostgresql implements OrdineDAO{
 			}
 		}
     }
+
+
 }
