@@ -62,6 +62,7 @@
 
 
         </catalogo>
+        </center><br>
         <input type="button" onclick="javascript:history.back()" value="Indietro"/>
 
         </div>

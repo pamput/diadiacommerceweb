@@ -9,8 +9,6 @@ import java.util.List;
 import persistenza.*;
 
 import modello.Ordine;
-import modello.Prodotto;
-import modello.RigaOrdine;
 import persistenza.PersistenceException;
 
 public class OrdineDAOpostgresql implements OrdineDAO{
@@ -224,7 +222,7 @@ public class OrdineDAOpostgresql implements OrdineDAO{
 
             //Interrogazione DB
 			successcount += statement.executeUpdate();
-            int id = dataSource.getLastSequenceValue("sequenzacodiceordine");
+            int id = dataSource.getLastSequenceValue("sequenzaordini");
             ordine.setID(id);
 
             for(int i = 0;i < ordine.getRigheOrdine().size();i++){

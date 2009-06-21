@@ -61,6 +61,9 @@ public interface Facade {
     //Dato il nome di un fornitore lo cerca nel DB e lo restituisce
 	public Fornitore getFornitorePerNome(String nome) throws PersistenceException;
 
+    //Restituisce la lista dei fornitori presenti nel DB
+	public List<Fornitore> getFornitori() throws PersistenceException;
+
 	//Dato un oggeto Fornitore lo inserisce nel DB
 	public void salvaFornitore(Fornitore fornitore) throws PersistenceException;
 }

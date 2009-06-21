@@ -31,7 +31,7 @@ public class DataSource {
 			//Connessione al DB
 			connection = getConnection();
 			//Preparazione query
-			String query = "SELECT last_value FROM sequenzaordini";
+			String query = "SELECT last_value FROM "+label;
 			statement = connection.prepareStatement(query);
             //statement.setString(1, label);
 		    //Interrogazione DB

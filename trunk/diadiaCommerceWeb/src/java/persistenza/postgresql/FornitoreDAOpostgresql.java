@@ -176,7 +176,12 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
             
             //Salva nel DB
             statement.executeUpdate();
-            
+
+            //Imposta l'id corretto al fornitore
+            fornitore.setId(dataSource.getLastSequenceValue("sequenzafornitori"));
+            //Salva le associazioni tra fornitore e prodotto
+            for(int i=0;i<fornitore.getListaProdotti().size();i++)
+                this.associaFornitoreProdotto(fornitore.getListaProdotti().get(i).getId(), fornitore.getId());
             
         } catch(Exception e) {
             throw new PersistenceException(e.getMessage());

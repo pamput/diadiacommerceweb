@@ -1,12 +1,13 @@
 package modello;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Fornitore {
     private String nome = "Not Present";
     private String indirizzo = "Not Present";
     private String telefono = "Not Present";
-    private List<Prodotto> listaProdotti = null;
+    protected List<Prodotto> listaProdotti = new LinkedList<Prodotto>();
     private int id = 0;
     
     public String getNome() {

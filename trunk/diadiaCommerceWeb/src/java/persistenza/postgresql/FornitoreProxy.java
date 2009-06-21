@@ -11,16 +11,18 @@ public class FornitoreProxy extends Fornitore {
 	//Restituisce la lista dei prodotti forniti
     @Override
 	public List<Prodotto> getListaProdotti() {
-		List<Prodotto> listaProdotti = new LinkedList<Prodotto>();
-		ProdottoDAOpostgresql prodottoDAO = new ProdottoDAOpostgresql();
-		try{
-			prodottoDAO = new ProdottoDAOpostgresql();
-			listaProdotti = prodottoDAO.retrieveProdottiByIDFornitore(this.getId());
-		}catch (PersistenceException e) {
-			System.out.println(e.getMessage());
-			listaProdotti = null;
-		}
-		this.setListaProdotti(listaProdotti);
-		return listaProdotti;
+        if((this.listaProdotti == null)||(this.listaProdotti.size() == 0)){
+            List<Prodotto> nuovaListaProdotti = new LinkedList<Prodotto>();
+            ProdottoDAOpostgresql prodottoDAO = new ProdottoDAOpostgresql();
+            try{
+                prodottoDAO = new ProdottoDAOpostgresql();
+                nuovaListaProdotti = prodottoDAO.retrieveProdottiByIDFornitore(this.getId());
+            }catch (PersistenceException e) {
+                System.out.println(e.getMessage());
+            }
+            this.setListaProdotti(nuovaListaProdotti);
+            return this.listaProdotti;
+        }else
+            return this.listaProdotti;
 	}
 }
