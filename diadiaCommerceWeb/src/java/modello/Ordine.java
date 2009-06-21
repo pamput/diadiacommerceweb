@@ -7,7 +7,7 @@ public class Ordine {
 	private String codice = "Not Present";
 	private int id = 0;
 	private Date data = null;
-	private String stato = "Not Present";
+	private String stato = "chiuso";
 	private Cliente cliente = null;
 	private List<RigaOrdine> righeOrdine = null;
 

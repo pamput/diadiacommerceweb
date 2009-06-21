@@ -100,7 +100,12 @@ public class Facadepostgresql implements Facade{
 	public Fornitore getFornitorePerNome(String nome) throws PersistenceException{
         return fornitoreDAO.retrieveFornitoreByNome(nome);
     }
-	
+
+    //Restituisce la lista dei fornitori presenti nel DB
+	public List<Fornitore> getFornitori() throws PersistenceException{
+        return fornitoreDAO.getFornitori();
+    }
+
 	//Dato un oggeto Fornitore lo inserisce nel DB
 	public void salvaFornitore(Fornitore fornitore) throws PersistenceException{
 		fornitoreDAO.saveFornitore(fornitore);

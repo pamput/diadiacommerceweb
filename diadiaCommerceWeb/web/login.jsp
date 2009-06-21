@@ -14,7 +14,7 @@
  
  <body>
     	<center>
-            <menu-top><jsp:include page="/menu.jsp" /></menu-top>
+            <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
         <div class="main-frame">
             <welcome-message>Benvenuto in DiaDia Commerce!</welcome-message><br>
             <% String role = "Utente anonimo";

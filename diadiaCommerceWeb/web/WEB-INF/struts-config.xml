@@ -12,6 +12,7 @@
         <form-bean name="InserisciProdottoForm" type="web.form.InserisciProdottoForm"/>
         <form-bean name="RegistrazioneForm" type="web.form.RegistrazioneForm"/>
         <form-bean name="RigaOrdineForm" type="web.form.RigaOrdineForm"/>
+        <form-bean name="AggiungiFornitoreForm" type="web.form.AggiungiFornitoreForm"/>
     </form-beans>
 
     <global-exceptions>
@@ -54,6 +55,8 @@
 
         <!-- FORNITORI -->
         <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
+        <forward name="mostraAggiungiFornitore" path="/WEB-INF/admin/richiestaAggiungiFornitore.jsp"/>
+        <forward name="confermaAggiungiFornitore" path="/WEB-INF/admin/confermaAggiungiFornitore.jsp"/>
 
     </global-forwards>
 
@@ -94,6 +97,9 @@
 
         <!-- FORNITORI -->
         <action path="/richiestaFornitori" type="web.action.SActionRichiestaFornitori"/>
+        <action path="/richiestaAggiungiFornitore" type="web.action.SActionRichiestaAggiungiFornitore"/>
+        <action path="/confermaAggiungiNuovoFornitore" type="web.action.SActionConfermaAggiungiFornitore" input="/WEB-INF/admin/richiestaAggiungiFornitore.jsp" validate="true" name="AggiungiFornitoreForm" scope="session"/>
+        <action path="/confermaAggiungiFornitoreEsistente" type="web.action.SActionConfermaAggiungiFornitore"/>
 
         <!-- EVADI ORDINE -->
         <action path="/richiestaEvadiOrdine" type="web.action.SActionRichiestaEvadiOrdine"/>
