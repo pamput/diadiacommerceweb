@@ -30,4 +30,5 @@ public interface OrdineDAO {
 
     //Evade un ordine aggiornando al disponibilita dei prodotti
     public void evadiOrdine(Ordine ordine) throws PersistenceException;
+
 }

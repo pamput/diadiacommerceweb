@@ -1,6 +1,7 @@
 body{
 	font-family: sans-serif;
 	background-color: #F0F8FF;
+    font-size:small;
 }
 
 h3{
@@ -45,6 +46,8 @@ form{
 
 div.main-frame{
 
+    display:table;
+    
     border-top-style: dashed;
     border-bottom-style: dashed;
     border-left-style: dashed;
@@ -63,6 +66,9 @@ div.main-frame{
     border-right-color: #6a8c4a;
     
     margin: 0 auto;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* CreaOrdine */
@@ -93,6 +99,8 @@ intestazione-catalogo{
 cella-intestazione-catalogo{
     display:table-cell;
     width:auto;
+    padding:3px;
+    font-size:small;
 }
 
 corpo-catalogo{
@@ -105,7 +113,15 @@ corpo-catalogo{
 cella-corpo-catalogo{
 
     display:table-cell;
+    font-size:small;
+    padding:3px;
     
+}
+
+cella-corpo-catalogo.ordine{
+
+    width:120px;
+
 }
 
 

@@ -120,7 +120,7 @@ public class RigaOrdineDAOpostgresql implements RigaOrdineDAO{
 	}
 
     //Dato un oggetto RigaOrdine lo inserisce nel DB se non presente, lo aggiorna altrimenti
-	public int saveRigaOrdine(RigaOrdine rigaOrdine,Ordine ordine,Connection conn) throws PersistenceException{
+	public int saveRigaOrdine(RigaOrdine rigaOrdine, Ordine ordine, Connection conn) throws PersistenceException{
 		Connection connection = conn;
 		PreparedStatement statement = null;
 		ResultSet result = null;

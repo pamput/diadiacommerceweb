@@ -49,7 +49,8 @@
                 <logic:iterate id="ordine" name="ordini">
                     <!--Scrive il corpo della lista di ordini-->
                     <corpo-catalogo>
-                        <cella-corpo-catalogo class="codice"><bean:write name="ordine" property="codice" /></cella-corpo-catalogo>
+                        <cella-corpo-catalogo class="codice"><html:link action="dettaglioOrdine.do" paramId="idOrdine" paramName="ordine" paramProperty="id">
+                            <bean:write name="ordine" property="codice" /></html:link></cella-corpo-catalogo>
                         <cella-corpo-catalogo class="data"><bean:write name="ordine" property="data" /></cella-corpo-catalogo>
                         <cella-corpo-catalogo class="stato"><bean:write name="ordine" property="stato" /></cella-corpo-catalogo>
                     </corpo-catalogo>

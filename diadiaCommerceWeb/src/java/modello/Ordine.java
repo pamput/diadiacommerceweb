@@ -23,6 +23,10 @@ public class Ordine {
 	public int getID(){
 		return id;
 	}
+
+    public int getId(){
+		return id;
+	}
 	
 	public String getStato() {
 		return this.stato;
@@ -54,6 +58,10 @@ public class Ordine {
 	}
 	
 	public void setID(int id){
+		this.id = id;
+	}
+
+    public void setId(int id){
 		this.id = id;
 	}
 	

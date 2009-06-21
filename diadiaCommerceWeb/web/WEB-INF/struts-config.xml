@@ -14,6 +14,10 @@
         <form-bean name="RigaOrdineForm" type="web.form.RigaOrdineForm"/>
     </form-beans>
 
+    <global-exceptions>
+
+    </global-exceptions>
+
     <!--Effettua il mapping tra la stringa ritornata dall'esecuzione di una Action e la pagina jsp da visualizzare-->
     <global-forwards>
         <!-- INSERIMENTO PRODOTTO -->
@@ -43,7 +47,10 @@
         <!-- CREA ORDINE -->
         <forward name="richiestaCreaOrdine"  path="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp"/>
         <forward name="riepilogoCreaOrdine"  path="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp"/>
-        <forward name="creaOrdine"  path="/WEB-INF/user/creaOrdine.jsp"/>
+        <forward name="creaOrdine"  path="/WEB-INF/user/crea-ordine/creaOrdine.jsp"/>
+
+        <!-- DETTAGLIO ORDINE -->
+        <forward name="dettaglioOrdine"  path="/WEB-INF/user/dettaglioOrdine.jsp"/>
 
         <!-- FORNITORI -->
         <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
@@ -78,6 +85,9 @@
         <action path="/richiestaCreaOrdine" type="web.action.creaOrdine.SActionRichiestaCreaOrdine"/>
         <action path="/riepilogoCreaOrdine" input="/WEB-INF/user/crea-ordine/richiestaCreaOrdine.jsp" validate="true" name="RigaOrdineForm" scope="session" type="web.action.creaOrdine.SActionRiepilogoCreaOrdine"/>
         <action path="/creaOrdine" input="/WEB-INF/user/crea-ordine/riepilogoCreaOrdine.jsp" type="web.action.creaOrdine.SActionCreaOrdine"/>
+
+        <!-- DETTAGLIO ORDINE -->
+        <action path="/dettaglioOrdine" type="web.action.SActionDettaglioOrdine"/>
 
         <!-- HOMEPAGE -->
         <action path="/homepage" type="web.action.SActionHomepage"/>

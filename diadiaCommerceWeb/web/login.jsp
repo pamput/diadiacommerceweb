@@ -13,16 +13,14 @@
  </head>
  
  <body>
-    <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
-	<center>
+    	<center>
+            <menu-top><jsp:include page="/menu.jsp" /></menu-top>
         <div class="main-frame">
-
             <welcome-message>Benvenuto in DiaDia Commerce!</welcome-message><br>
             <% String role = "Utente anonimo";
             if(session.getAttribute("role") != null)
                 role = (String) session.getAttribute("role");
             out.print("<h3>Sei attualmente loggato come: <loggato-come>" + role + "</loggato-come></h3><br>"); %>
-
             <html:form action="login.do" focus="username">
                 Username:<br>
                     <html:text name="LoginForm" property='username'/><br>
