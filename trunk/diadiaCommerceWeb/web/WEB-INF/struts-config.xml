@@ -54,10 +54,13 @@
         <forward name="dettaglioOrdine"  path="/WEB-INF/user/dettaglioOrdine.jsp"/>
 
         <!-- FORNITORI -->
-        <forward name="mostraFornitori" path="/WEB-INF/admin/fornitori.jsp"/>
-        <forward name="mostraAggiungiFornitore" path="/WEB-INF/admin/richiestaAggiungiFornitore.jsp"/>
-        <forward name="confermaAggiungiFornitore" path="/WEB-INF/admin/confermaAggiungiFornitore.jsp"/>
+        <forward name="mostraFornitori" path="/WEB-INF/admin/inserisci-fornitore/fornitori.jsp"/>
+        <forward name="mostraAggiungiFornitore" path="/WEB-INF/admin/inserisci-fornitore/richiestaAggiungiFornitore.jsp"/>
+        <forward name="confermaAggiungiFornitore" path="/WEB-INF/admin/inserisci-fornitore/confermaAggiungiFornitore.jsp"/>
 
+        <!-- EVADI ORDINE -->
+        <forward name="mostraRiepilogoEvadiOrdine" path="/WEB-INF/admin/evadi-ordine/riepilogoEvadiOrdine.jsp"/>
+        <forward name="mostraConfermaEvadiOrdine" path="/WEB-INF/admin/evadi-ordine/confermaEvadiOrdine.jsp"/>
     </global-forwards>
 
     <!--Effettua il mapping tra un azione richiesta e la classe azione corrispondente-->
@@ -98,7 +101,7 @@
         <!-- FORNITORI -->
         <action path="/richiestaFornitori" type="web.action.SActionRichiestaFornitori"/>
         <action path="/richiestaAggiungiFornitore" type="web.action.SActionRichiestaAggiungiFornitore"/>
-        <action path="/confermaAggiungiNuovoFornitore" type="web.action.SActionConfermaAggiungiFornitore" input="/WEB-INF/admin/richiestaAggiungiFornitore.jsp" validate="true" name="AggiungiFornitoreForm" scope="session"/>
+        <action path="/confermaAggiungiNuovoFornitore" type="web.action.SActionConfermaAggiungiFornitore" input="/WEB-INF/admin/inserisci-fornitore/richiestaAggiungiFornitore.jsp" validate="true" name="AggiungiFornitoreForm" scope="session"/>
         <action path="/confermaAggiungiFornitoreEsistente" type="web.action.SActionConfermaAggiungiFornitore"/>
 
         <!-- EVADI ORDINE -->

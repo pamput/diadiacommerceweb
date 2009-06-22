@@ -2,40 +2,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
- <head>
-  <title>Inserimento Prodotto Completato</title>
-  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-    <%@ page contentType="text/html" pageEncoding="UTF-8"%>
-    <%@ page language="java" %>
-    <%@ page import="web.form.InserisciProdottoForm" %>
-    <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-    <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
- </head>
- 
- <body>
-    <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
-    <div class="main-frame">
-        <h3>L'inserimento e stato completato con successo</h3>
+    <head>
+        <title>Inserimento Prodotto Completato</title>
+        <%@ include file="/head.jsp" %>
+    </head>
 
-        Nome: <bean:write name="InserisciProdottoForm" property="nome" />
-        <br>
+    <body>
+        <%@ include file="/menu.jsp" %>
 
-        Codice: <bean:write name="InserisciProdottoForm" property="codice" />
-        <br>
+        <div class="main-frame">
+            <h3>L'inserimento e stato completato con successo</h3>
 
-        Descrizione: <bean:write name="InserisciProdottoForm" property="descrizione" />
-        <br>
+            <b>Nome:</b> <bean:write name="InserisciProdottoForm" property="nome" /><br><br>
+            <b>Codice:</b> <bean:write name="InserisciProdottoForm" property="codice" /><br><br>
+            <b>Descrizione:</b> <bean:write name="InserisciProdottoForm" property="descrizione" /><br><br>
+            <b>Prezzo:</b> <bean:write name="InserisciProdottoForm" property="prezzo" /><br><br>
+            <b>Quantit‡:</b> <bean:write name="InserisciProdottoForm" property="quantita" /><br><br>
 
-        Prezzo: <bean:write name="InserisciProdottoForm" property="prezzo" />
-        <br>
+            <html:link page='/richiestaInserisciProdotto.do'>
+                <button>Inserisci un nuovo prodotto</button>
+            </html:link>
 
-        Quantit√†: <bean:write name="InserisciProdottoForm" property="quantita" />
-        <br>
+            <%session.removeAttribute("InserimentoProdottoForm");%>
 
-        <a href='./richiestaInserisciProdotto.do'><input type='Button' value='Inserisci un nuovo prodotto'></a>
-
-        
-    </div>
-</body>
- 
+        </div>
+    </body>
 </html>
+    

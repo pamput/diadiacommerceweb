@@ -10,9 +10,13 @@ DROP TABLE prodotti CASCADE;
 
 DROP TABLE fornitori CASCADE;
 
+DROP TABLE accounts CASCADE;
+
 DROP SEQUENCE sequenzaclienti;
 
 DROP SEQUENCE sequenzaordini;
+
+DROP SEQUENCE sequenzacodiceordine;
 
 DROP SEQUENCE sequenzaprodotti;
 

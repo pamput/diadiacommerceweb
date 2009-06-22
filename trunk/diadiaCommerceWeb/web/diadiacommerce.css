@@ -11,6 +11,11 @@ h3{
     text-align: center;
 }
 
+b{
+    font-weight:bold;
+    font-size: inherit;
+}
+
 table{
     border: 1px;
     border-style:solid;
@@ -73,7 +78,7 @@ div.main-frame{
 
 /* CreaOrdine */
 
-catalogo{
+tabella{
 
     display:table;
     border: 1px;
@@ -87,7 +92,7 @@ catalogo{
     
 }
 
-intestazione-catalogo{
+intestazione-tabella{
 
     display:table-row;
     width:auto;
@@ -96,21 +101,21 @@ intestazione-catalogo{
     color: white;
 }
 
-cella-intestazione-catalogo{
+cella-intestazione-tabella{
     display:table-cell;
     width:auto;
     padding:3px;
     font-size:small;
 }
 
-corpo-catalogo{
+corpo-tabella{
 
     display:table-row;
 
         
 }
 
-cella-corpo-catalogo{
+cella-corpo-tabella{
 
     display:table-cell;
     font-size:small;
@@ -118,7 +123,7 @@ cella-corpo-catalogo{
     
 }
 
-cella-corpo-catalogo.ordine{
+cella-corpo-tabella.ordine{
 
     width:120px;
 

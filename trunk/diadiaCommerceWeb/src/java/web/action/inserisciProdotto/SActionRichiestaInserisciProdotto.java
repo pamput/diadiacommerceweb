@@ -30,12 +30,8 @@ public class SActionRichiestaInserisciProdotto extends org.apache.struts.action.
      * @throws java.lang.Exception
      * @return
      */
-    public ActionForward execute(ActionMapping mapping, ActionForm form,
-            HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-
-        request.getSession().removeAttribute("InserisciProdottoForm");
-        
+    @Override
+    public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception {
         return mapping.findForward(SUCCESS);
     }
 }

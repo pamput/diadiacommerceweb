@@ -9,23 +9,24 @@
    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
-<head>
-    <title>Riepilogo Inserimento Nuovo Prodotto</title>
-    <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-    <%@ page language="java" %>
-    <%@ page import="web.form.RegistrazioneForm" %>
-    <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-    <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-</head>
+    <head>
+        <title>Riepilogo Inserimento Nuovo Prodotto</title>
+        <%@ include file="/head.jsp" %>
+    </head>
+
     <body>
-        <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
-        <% RegistrazioneForm form = (RegistrazioneForm)session.getAttribute("RegistrazioneForm"); %>
+        <%@ include file="/menu.jsp" %>
+
         <div class="main-frame">
             <h3>Dati registrazione</h3>
-            Username: <%=form.getUsername() %><br><br>
-            Password: <%=form.getPassword() %><br><br>
-            Codice Cliente: <%=form.getCodicecliente() %><br><br>
+
+            <b>La registrazione è stata effettuata con successo!</b><br><br>
+
+            <b>Username:</b> <bean:write name="RegistrazioneForm" property="username"/><br><br>
+            <b>Password:</b> <bean:write name="RegistrazioneForm" property="password"/><br><br>
+            <b>Codice Cliente:</b> <bean:write name="RegistrazioneForm" property="codicecliente"/><br><br>
         </div>
+
         <%session.removeAttribute("RegistrazioneForm");%>
     </body>
 </html>

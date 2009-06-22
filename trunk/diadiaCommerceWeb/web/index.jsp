@@ -10,13 +10,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
- <head>
-  <title>DiaDia Commerce </title>
-  <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" /> 
- </head>
+    <head>
+        <title>DiaDia Commerce</title>
+    </head>
 
- <body>
-     <jsp:include page="./login.jsp" />
- </body>
+    <body>
+        <jsp:include page="./login.jsp" />
+    </body>
 
 </html>

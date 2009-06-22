@@ -12,21 +12,16 @@ package persistenza.postgresql;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.LinkedList;
 import modello.*;
-import persistenza.postgresql.*;
 import org.dbunit.Assertion;
 import org.dbunit.DatabaseTestCase;
-import org.dbunit.database.DatabaseConfig.ConfigProperty;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
-import org.dbunit.dataset.ITableIterator;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
-import org.dbunit.operation.DatabaseOperation;
 import org.junit.Test;
 
 public class RigaOrdineDAOpostgresqlTest extends DatabaseTestCase{
@@ -43,7 +38,7 @@ public class RigaOrdineDAOpostgresqlTest extends DatabaseTestCase{
         List<RigaOrdine> expectedResult = new LinkedList<RigaOrdine>();
         for(int i = 0; i < expectedTable.getRowCount(); i++){
             rigaordine = new RigaOrdine();
-            rigaordine.setID(Integer.parseInt((String) expectedTable.getValue(i, "id")));
+            rigaordine.setId(Integer.parseInt((String) expectedTable.getValue(i, "id")));
             rigaordine.setNumeroRiga(Integer.parseInt((String) expectedTable.getValue(i, "numeroriga")));
             rigaordine.setQuantita(Integer.parseInt((String) expectedTable.getValue(i, "quantita")));
             ProdottoDAOpostgresql prodottoDAO = new ProdottoDAOpostgresql();
@@ -63,9 +58,9 @@ public class RigaOrdineDAOpostgresqlTest extends DatabaseTestCase{
         
         RigaOrdine nuovaRigaOrdine = new RigaOrdine();
         Ordine ordine = new Ordine();
-        ordine.setID(2);
+        ordine.setId(2);
         Prodotto prodotto = new Prodotto();
-        prodotto.setID(2);
+        prodotto.setId(2);
         nuovaRigaOrdine.setProdotto(prodotto);
         nuovaRigaOrdine.setNumeroRiga(3);
         nuovaRigaOrdine.setQuantita(10);
@@ -89,11 +84,11 @@ public class RigaOrdineDAOpostgresqlTest extends DatabaseTestCase{
         //Inizializzazione oggetto per il test
         //	<righeordine id="4" idordine="2" idprodotto="4" numeroriga="2" quantita="2" />
         RigaOrdine nuovaRigaOrdine = new RigaOrdine();
-        nuovaRigaOrdine.setID(4);
+        nuovaRigaOrdine.setId(4);
         Ordine ordine = new Ordine();
-        ordine.setID(2);
+        ordine.setId(2);
         Prodotto prodotto = new Prodotto();
-        prodotto.setID(4);
+        prodotto.setId(4);
         nuovaRigaOrdine.setProdotto(prodotto);
         nuovaRigaOrdine.setNumeroRiga(2);
         nuovaRigaOrdine.setQuantita(12);
