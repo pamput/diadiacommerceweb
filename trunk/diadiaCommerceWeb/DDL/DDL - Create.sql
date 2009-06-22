@@ -111,9 +111,6 @@ ALTER TABLE ONLY fornisce
 ALTER TABLE ONLY fornisce
     ADD CONSTRAINT fornisce_idfornitore_fkey FOREIGN KEY (idfornitore) REFERENCES fornitori(id) ON UPDATE CASCADE ON DELETE CASCADE;
 
-ALTER TABLE ONLY fornisce
-    ADD CONSTRAINT fornisce_idprodotto_idfornitore_unique UNIQUE (idfornitore, idprodotto);
-
 -- Tabella righe ordine
 CREATE TABLE righeordine (
     id integer NOT NULL,

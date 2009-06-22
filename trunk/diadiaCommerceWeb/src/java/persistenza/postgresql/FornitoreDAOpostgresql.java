@@ -148,6 +148,7 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
         PreparedStatement statement = null;
         ResultSet result = null;
         try{
+            //Cerca nel DB per il fornitore indicato
             connection = dataSource.getConnection();
             String query = "SELECT * " +
                     "FROM fornitori " +
@@ -165,6 +166,8 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
             } else {
                 query = "INSERT INTO fornitori (id, nome, indirizzo, telefono)  " +
                         "VALUES (NEXTVAL('sequenzafornitori'), ?, ?, ?)";
+                //Imposta l'id corretto al fornitore
+                fornitore.setId(dataSource.getLastSequenceValue("sequenzafornitori"));
             }
             statement = connection.prepareStatement(query);
             statement.setString(1, fornitore.getNome());
@@ -177,8 +180,6 @@ public class FornitoreDAOpostgresql implements FornitoreDAO{
             //Salva nel DB
             statement.executeUpdate();
 
-            //Imposta l'id corretto al fornitore
-            fornitore.setId(dataSource.getLastSequenceValue("sequenzafornitori"));
             //Salva le associazioni tra fornitore e prodotto
             for(int i=0;i<fornitore.getListaProdotti().size();i++)
                 this.associaFornitoreProdotto(fornitore.getListaProdotti().get(i).getId(), fornitore.getId());
