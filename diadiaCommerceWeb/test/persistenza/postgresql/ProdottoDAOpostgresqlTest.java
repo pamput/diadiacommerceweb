@@ -7,8 +7,6 @@ package persistenza.postgresql;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import modello.*;
@@ -16,7 +14,6 @@ import org.dbunit.Assertion;
 import org.dbunit.DatabaseTestCase;
 import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
-import org.dbunit.dataset.DataSetException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
@@ -53,7 +50,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto expResult = new Prodotto();
         expResult.setCodice("TRE");
         expResult.setDescrizione("Prodotto alimentare");
-        expResult.setID(idProdotto);
+        expResult.setId(idProdotto);
         expResult.setNome("Caramelle alla liquirizia");
         expResult.setPrezzo(2);
         expResult.setQuantita(500);
@@ -72,7 +69,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto expResult = new Prodotto();
         expResult.setCodice(codiceProdotto);
         expResult.setDescrizione("Pneumatici");
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.setNome("Pneumatici R13");
         expResult.setPrezzo(50);
         expResult.setQuantita(4);
@@ -95,7 +92,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto prodotto = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             prodotto = new Prodotto();
-            prodotto.setID((Integer)expTable.getValue(i, "id"));
+            prodotto.setId((Integer)expTable.getValue(i, "id"));
             prodotto.setCodice((String) expTable.getValue(i, "codice"));
             prodotto.setDescrizione((String) expTable.getValue(i, "descrizione"));
             prodotto.setNome((String) expTable.getValue(i, "nome"));
@@ -122,7 +119,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto prodotto = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             prodotto = new Prodotto();
-            prodotto.setID(Integer.parseInt((String) expTable.getValue(i, "id")));
+            prodotto.setId(Integer.parseInt((String) expTable.getValue(i, "id")));
             prodotto.setCodice((String) expTable.getValue(i, "codice"));
             prodotto.setDescrizione((String) expTable.getValue(i, "descrizione"));
             prodotto.setNome((String) expTable.getValue(i, "nome"));
@@ -160,13 +157,13 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto prodotto = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             prodotto = new Prodotto();
-            prodotto.setID(Integer.parseInt((String) expTable.getValue(i, "id")));
+            prodotto.setId(Integer.parseInt((String) expTable.getValue(i, "id")));
             prodotto.setCodice((String) expTable.getValue(i, "codice"));
             prodotto.setDescrizione((String) expTable.getValue(i, "descrizione"));
             prodotto.setNome((String) expTable.getValue(i, "nome"));
             prodotto.setPrezzo(Integer.parseInt((String) expTable.getValue(i, "prezzo")));
             prodotto.setQuantita(Integer.parseInt((String) expTable.getValue(i, "quantita")));
-            if(forniti.contains(prodotto.getID()))
+            if(forniti.contains(prodotto.getId()))
                 expResult.add(prodotto);
         }
         List<Prodotto> result = instance.retrieveProdottiByIDFornitore(IDFornitore);
@@ -183,7 +180,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto prodotto = new Prodotto();
         prodotto.setCodice("SEI");
         prodotto.setDescrizione("Prodotto di cartoleria");
-        prodotto.setID(6);
+        prodotto.setId(6);
         prodotto.setNome("Supercolla");
         prodotto.setPrezzo(7);
         prodotto.setQuantita(24);
@@ -206,7 +203,7 @@ public class ProdottoDAOpostgresqlTest extends DatabaseTestCase{
         Prodotto prodotto = new Prodotto();
         prodotto.setCodice("QUATTRO");
         prodotto.setDescrizione("Notebook");
-        prodotto.setID(4);
+        prodotto.setId(4);
         prodotto.setNome("AsusG50");
         prodotto.setPrezzo(800);
         prodotto.setQuantita(32);

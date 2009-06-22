@@ -10,59 +10,52 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-        <%@ page language="java" %>
-        <%@ page import="modello.Cliente,modello.Ordine" %>
-
-        <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-        <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-        <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-
-        <title>Homepage di <bean:write name="cliente" property="nome" /></title>
+        <%@ include file="/head.jsp" %>
+        <title>Dettaglio ordine</title>
     </head>
 
     <body>
-        <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
+        <%@ include file="/menu.jsp" %>
+
         <div class="main-frame">
-           <h3>Dettagli ordine</h3>
+            <h3>Dettagli ordine</h3>
 
+            <center>
+                <tabella>
+                    <intestazione-tabella>
+                        <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="descrizione">Descrizione</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="prezzo">Prezzo</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="disponibili">Disponibili</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="ordinati">Ordinati</cella-intestazione-tabella>
+                    </intestazione-tabella>
 
+                    <logic:iterate id="riga" name="listaDettaglioOrdine">
+                        <corpo-tabella>
+                            <cella-corpo-tabella class="nome">
+                                <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="riga" paramProperty="prodotto.id">
+                                    <bean:write name="riga" property="prodotto.nome" />
+                                </html:link>
+                            </cella-corpo-tabella>
+                            <cella-corpo-tabella class="codice"><bean:write name="riga" property="prodotto.codice" /></cella-corpo-tabella>
+                            <cella-corpo-tabella class="descrizione"><bean:write name="riga" property="prodotto.descrizione" /></cella-corpo-tabella>
+                            <cella-corpo-tabella class="prezzo">
+                                <bean:write name="riga" property="prodotto.prezzo" />
+                                <bean:message key="text.moneyvalue"/>
+                            </cella-corpo-tabella>
+                            <cella-corpo-tabella class="disponibili"><bean:write name="riga" property="prodotto.quantita" /></cella-corpo-tabella>
 
-    <center>
+                            <!-- cella del numero degli ordini -->
+                            <cella-corpo-tabella class="disponibili">
+                                <bean:write name="riga" property="quantita" />
+                            </cella-corpo-tabella>
+                        </corpo-tabella>
+                    </logic:iterate>
 
-        <catalogo>
-            <intestazione-catalogo>
-                <cella-intestazione-catalogo class="nome">Nome</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="codice">Codice</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="descrizione">Descrizione</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="prezzo">Prezzo</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="disponibili">Disponibili</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="ordinati">Ordinati</cella-intestazione-catalogo>
+                </tabella>
+            </center><br>
 
-            </intestazione-catalogo>
-
-                        <logic:iterate id="riga" name="listaDettaglioOrdine">
-                <corpo-catalogo>
-                    <cella-corpo-catalogo class="nome"><html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="riga" paramProperty="prodotto.id">
-                        <bean:write name="riga" property="prodotto.nome" /></html:link>
-                    </cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="codice"><bean:write name="riga" property="prodotto.codice" /></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="descrizione"><bean:write name="riga" property="prodotto.descrizione" /></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="prezzo"><bean:write name="riga" property="prodotto.prezzo" />
-                        <bean:message key="text.moneyvalue"/></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="disponibili"><bean:write name="riga" property="prodotto.quantita" /></cella-corpo-catalogo>
-
-                    <!-- cella del numero degli ordini -->
-                    <cella-corpo-catalogo class="disponibili">
-                        <bean:write name="riga" property="quantita" />
-                    </cella-corpo-catalogo>
-                </corpo-catalogo>
-            </logic:iterate>
-
-
-        </catalogo>
-        </center><br>
         <input type="button" onclick="javascript:history.back()" value="Indietro"/>
 
         </div>

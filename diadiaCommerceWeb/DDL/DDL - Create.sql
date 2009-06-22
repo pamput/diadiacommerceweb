@@ -136,7 +136,7 @@ ALTER TABLE public.righeordine OWNER TO postgres;
 
 -- Sequenze
 CREATE SEQUENCE sequenzaclienti
-    START WITH 5
+    START WITH 6
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -145,7 +145,7 @@ CREATE SEQUENCE sequenzaclienti
 ALTER TABLE public.sequenzaclienti OWNER TO postgres;
 
 CREATE SEQUENCE sequenzafornitori
-    START WITH 4
+    START WITH 6
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -154,6 +154,7 @@ CREATE SEQUENCE sequenzafornitori
 ALTER TABLE public.sequenzafornitori OWNER TO postgres;
 
 CREATE SEQUENCE sequenzaordini
+	START WITH 6
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
@@ -162,12 +163,22 @@ CREATE SEQUENCE sequenzaordini
 ALTER TABLE public.sequenzaordini OWNER TO postgres;
 
 CREATE SEQUENCE sequenzaprodotti
+    START WITH 6
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
     CACHE 1;
 
 ALTER TABLE public.sequenzaprodotti OWNER TO postgres;
+
+CREATE SEQUENCE sequenzacodiceordine
+    START WITH 6
+    INCREMENT BY 1
+    NO MAXVALUE
+    NO MINVALUE
+    CACHE 1;
+
+ALTER TABLE public.sequenzacodiceordine OWNER TO postgres;
 
 CREATE SEQUENCE sequenzarigheordine
     START WITH 5

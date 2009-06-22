@@ -10,64 +10,59 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@ include file="/head.jsp" %>
         <title>Catalogo Prodotti</title>
-        <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-
-        <%@ page language="java" %>
-        <%@ page import='java.util.List,modello.Prodotto' %>
-
-        <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-        <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-        <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
     </head>
 
     <body>
-        <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
+        <%@ include file="/menu.jsp" %>
+
         <div class="main-frame">
-        <h3>Prodotti in catalogo</h3><br>
-        <center>
-            <catalogo>
+            <h3>Prodotti in catalogo</h3><br>
+            <center>
+                <tabella>
 
-            <intestazione-catalogo>
-                <cella-intestazione-catalogo class="nome">Nome</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="codice">Codice</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="descrizione">Descrizione</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="prezzo">Prezzo</cella-intestazione-catalogo>
-                <cella-intestazione-catalogo class="disponibili">Disponibili</cella-intestazione-catalogo>
-                <logic:equal name="role" value="admin">
-                    <cella-intestazione-catalogo class="fornitori">Fornitori</cella-intestazione-catalogo>
-                </logic:equal>
-            </intestazione-catalogo>
+                    <intestazione-tabella>
+                        <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="descrizione">Descrizione</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="prezzo">Prezzo</cella-intestazione-tabella>
+                        <cella-intestazione-tabella class="disponibili">Disponibili</cella-intestazione-tabella>
+                        <logic:equal name="role" value="admin">
+                            <cella-intestazione-tabella class="fornitori">Fornitori</cella-intestazione-tabella>
+                        </logic:equal>
+                    </intestazione-tabella>
 
-            <!--Inizializza a 0 il contarore del logic iterate-->
-            <% int i=0; %>
-        
-            <logic:iterate id="prodotto" name="catalogoProdotti">
-                <!--Scrive il corpo del catalogo-->
-                <corpo-catalogo>
-                    <cella-corpo-catalogo class="nome">
-                        <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="prodotto" paramProperty="id"><bean:write name="prodotto" property="nome" /></html:link>
-                    </cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="codice"><bean:write name="prodotto" property="codice" /></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="prezzo"><bean:write name="prodotto" property="prezzo" />
-                        <bean:message key="text.moneyvalue"/></cella-corpo-catalogo>
-                    <cella-corpo-catalogo class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-catalogo>
-                    
-                    <!--Se sta visualizzando la pagina un amministratore aggiunge la possibilta di mostrare i fornitori del prodotto-->
-                    <logic:equal name="role" value="admin">
-                        <cella-corpo-catalogo class="fornitori">
-                            <html:link page="/richiestaFornitori.do" paramId="codiceProdotto" paramName="prodotto" paramProperty="codice">Visualizza</html:link>
-                        </cella-corpo-catalogo>
-                    </logic:equal>
-                </corpo-catalogo>
+                    <!--Inizializza a 0 il contarore del logic iterate-->
+                    <% int i = 0;%>
 
-                <!--Incrementa il contatore del logic iterate-->
-                <% i++; %>
-            </logic:iterate>
-    </catalogo>
-    </center>
-    </div>
+                    <logic:iterate id="prodotto" name="catalogoProdotti">
+                        <!--Scrive il corpo del catalogo-->
+                        <corpo-tabella>
+                            <cella-corpo-tabella class="nome">
+                                <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="prodotto" paramProperty="id"><bean:write name="prodotto" property="nome" /></html:link>
+                            </cella-corpo-tabella>
+                            <cella-corpo-tabella class="codice"><bean:write name="prodotto" property="codice" /></cella-corpo-tabella>
+                            <cella-corpo-tabella class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-tabella>
+                            <cella-corpo-tabella class="prezzo">
+                                <bean:write name="prodotto" property="prezzo" />
+                                <bean:message key="text.moneyvalue"/>
+                            </cella-corpo-tabella>
+                            <cella-corpo-tabella class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-tabella>
+
+                            <!--Se sta visualizzando la pagina un amministratore aggiunge la possibilta di mostrare i fornitori del prodotto-->
+                            <logic:equal name="role" value="admin">
+                                <cella-corpo-tabella class="fornitori">
+                                    <html:link page="/richiestaFornitori.do" paramId="codiceProdotto" paramName="prodotto" paramProperty="codice">Visualizza</html:link>
+                                </cella-corpo-tabella>
+                            </logic:equal>
+                        </corpo-tabella>
+
+                        <!--Incrementa il contatore del logic iterate-->
+                        <% i++;%>
+                    </logic:iterate>
+                </tabella>
+            </center>
+        </div>
     </body>
 </html>

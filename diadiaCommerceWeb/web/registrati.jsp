@@ -10,32 +10,31 @@
 
 <html>
     <head>
-  <head>
-    <title>Registrazione</title>
-    <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
-    <%@ page language="java" %>
-    <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-    <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-  </head>
+    <head>
+        <title>Registrazione</title>
+        <%@ include file="/head.jsp" %>
+    </head>
+
     <body>
-        <menu-top><jsp:include page="/menu.jsp" /></menu-top><br><br>
+        <%@ include file="/menu.jsp" %>
+
         <div class="main-frame">
-        <h3>Registrazione nuovo utente</h3><br>
-        <html:form action="/registrati.do" method="POST">
-            Username:
-            <html:text name="RegistrazioneForm" property="username"/>
-            <html:errors property="username"/><br><br>
-            Password:
-            <html:password name="RegistrazioneForm" property="password"/>
-            <html:errors property="password"/><br><br>
-            Conferma Password:
-            <html:password name="RegistrazioneForm" property="passwordconf"/>
-            <html:errors property="passwordconf"/><br><br>
-            Codice Cliente:
-            <html:text name="RegistrazioneForm" property="codicecliente"/>
-            <html:errors property="codicecliente"/><br><br>
-            <html:submit value="Registra"/>
-        </html:form>
+            <h3>Registrazione nuovo utente</h3><br>
+            <html:form action="/registrati.do" method="POST">
+                <b>Username:</b>
+                <html:text name="RegistrazioneForm" property="username"/>
+                <html:errors property="username"/><br><br>
+                <b>Password:</b>
+                <html:password name="RegistrazioneForm" property="password"/>
+                <html:errors property="password"/><br><br>
+                <b>Conferma Password:</b>
+                <html:password name="RegistrazioneForm" property="passwordconf"/>
+                <html:errors property="passwordconf"/><br><br>
+                <b>Codice Cliente:</b>
+                <html:text name="RegistrazioneForm" property="codicecliente"/>
+                <html:errors property="codicecliente"/><br><br>
+                <html:submit value="Registra"/>
+            </html:form>
         </div>
     </body>
 </html>

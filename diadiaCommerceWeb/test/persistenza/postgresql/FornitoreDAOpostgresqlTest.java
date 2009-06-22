@@ -46,7 +46,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         FornitoreDAOpostgresql fornitoreDao = new FornitoreDAOpostgresql();
         
         Fornitore nuovoFornitore = new Fornitore();
-        nuovoFornitore.setID(6);
+        nuovoFornitore.setId(6);
         nuovoFornitore.setNome("Kamal");
         nuovoFornitore.setTelefono("123456");
         nuovoFornitore.setIndirizzo("Via via via da qui!");
@@ -80,7 +80,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         FornitoreDAOpostgresql fornitoreDao = new FornitoreDAOpostgresql();
         
         Fornitore nuovoFornitore = new Fornitore();
-        nuovoFornitore.setID(1);
+        nuovoFornitore.setId(1);
         nuovoFornitore.setNome("Kamal");
         nuovoFornitore.setTelefono("123456");
         nuovoFornitore.setIndirizzo("Via via via da qui!");
@@ -122,7 +122,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         //Il fornitore atteso è:
         //<fornitori id="2" nome="CARAMELLE inc" indirizzo="Via Boh 23" telefono="082342311"/>
         Fornitore expResult = new FornitoreProxy();
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.setIndirizzo("Via Boh 23");
         expResult.setNome("CARAMELLE inc");
         expResult.setTelefono("082342311");
@@ -147,7 +147,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         //Il fornitore atteso è:
         //<fornitori id="2" nome="CARAMELLE inc" indirizzo="Via Boh 23" telefono="082342311"/>
         Fornitore expResult = new FornitoreProxy();
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.setIndirizzo("Via Boh 23");
         expResult.setNome("CARAMELLE inc");
         expResult.setTelefono("082342311");
@@ -171,7 +171,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         //Il fornitore atteso è:
         //<fornitori id="2" nome="CARAMELLE inc" indirizzo="Via Boh 23" telefono="082342311"/>
         Fornitore expResult = new FornitoreProxy();
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.setIndirizzo("Via Boh 23");
         expResult.setNome("CARAMELLE inc");
         expResult.setTelefono("082342311");
@@ -199,7 +199,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         Fornitore fornitore = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             fornitore = new FornitoreProxy();
-            fornitore.setID(Integer.parseInt((String) expTable.getValue(i, "id")));
+            fornitore.setId(Integer.parseInt((String) expTable.getValue(i, "id")));
             fornitore.setNome((String) expTable.getValue(i, "nome"));
             fornitore.setIndirizzo((String) expTable.getValue(i, "indirizzo"));
             fornitore.setTelefono((String) expTable.getValue(i, "telefono"));
@@ -227,12 +227,13 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         
         // Fetch database data after executing your code
         IDataSet databaseDataSet = getConnection().createDataSet();
+        ITable actualTable = databaseDataSet.getTable("fornitori");
         
         // Load expected data from an XML dataset
         IDataSet expectedDataSet = new FlatXmlDataSet(new File("dataset/persistenza.postgresql.FornitoreDAOpostgresql/testDeleteFornitore.xml"));
-        
+        ITable expectedTable = expectedDataSet.getTable("fornitori");
         // Assert actual database table match expected table
-        Assertion.assertEquals(expectedDataSet, databaseDataSet);
+        Assertion.assertEquals(expectedTable, actualTable);
         
     }
     
@@ -250,7 +251,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         //Il fornitore atteso è:
         //<fornitori id="3" nome="ACME inc" indirizzo="Via Uhm 23" telefono="0390248902"/>
         Fornitore expResult = new FornitoreProxy();
-        expResult.setID(3);
+        expResult.setId(3);
         expResult.setIndirizzo("Via Uhm 23");
         expResult.setNome("ACME inc");
         expResult.setTelefono("0390248902");
@@ -275,7 +276,7 @@ public class FornitoreDAOpostgresqlTest extends DatabaseTestCase{
         FornitoreDAOpostgresql instance = new FornitoreDAOpostgresql();
         instance.associaFornitoreProdotto(idProdotto, idFornitore);
 
-                // Fetch database data after executing your code
+        // Fetch database data after executing your code
         IDataSet databaseDataSet = getConnection().createDataSet();
         ITable actualTable = databaseDataSet.getTable("fornisce");
 

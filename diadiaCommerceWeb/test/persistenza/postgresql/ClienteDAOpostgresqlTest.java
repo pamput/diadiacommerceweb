@@ -54,7 +54,7 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         //Il cliente atteso è:
         //<clienti id="3" codice="TRE" nome="Giovanni Blu" indirizzo="Via Quando" partitaiva="PIVA3"/>
         Cliente expResult = new ClienteProxy();
-        expResult.setID(3);
+        expResult.setId(3);
         expResult.setIndirizzo("Via Quando");
         expResult.setNome("Giovanni Blu");
         expResult.setCodice("TRE");
@@ -78,7 +78,7 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         //Il cliente atteso è:
         //<clienti id="3" codice="TRE" nome="Giovanni Blu" indirizzo="Via Quando" partitaiva="PIVA3"/>
         Cliente expResult = new ClienteProxy();
-        expResult.setID(3);
+        expResult.setId(3);
         expResult.setIndirizzo("Via Quando");
         expResult.setNome("Giovanni Blu");
         expResult.setCodice("TRE");
@@ -99,7 +99,7 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         //Il cliente atteso è:
         //<clienti id="3" codice="TRE" nome="Giovanni Blu" indirizzo="Via Quando" partitaiva="PIVA3"/>
         Cliente expResult = new ClienteProxy();
-        expResult.setID(3);
+        expResult.setId(3);
         expResult.setIndirizzo("Via Quando");
         expResult.setNome("Giovanni Blu");
         expResult.setCodice("TRE");
@@ -130,7 +130,7 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         ClienteDAOpostgresql clienteDao = new ClienteDAOpostgresql();
         
         Cliente nuovoCliente = new Cliente();
-        nuovoCliente.setID(5);
+        nuovoCliente.setId(5);
         nuovoCliente.setNome("Kamal");
         nuovoCliente.setIndirizzo("Via via via da qui!");
         nuovoCliente.setPartitaiva("PARTIVA123");
@@ -165,7 +165,7 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         ClienteDAOpostgresql clienteDao = new ClienteDAOpostgresql();
         
         Cliente nuovoCliente = new Cliente();
-        nuovoCliente.setID(4);
+        nuovoCliente.setId(4);
         nuovoCliente.setNome("Kamal");
         nuovoCliente.setIndirizzo("Via via via da qui!");
         nuovoCliente.setPartitaiva("PARTIVA123");
@@ -205,12 +205,12 @@ public class ClienteDAOpostgresqlTest extends DatabaseTestCase{
         
         // Fetch database data after executing your code
         IDataSet databaseDataSet = getConnection().createDataSet();
-        
+        ITable actualTable = databaseDataSet.getTable("clienti");
         // Load expected data from an XML dataset
         IDataSet expectedDataSet = new FlatXmlDataSet(new File("dataset/persistenza.postgresql.ClienteDAOpostgresql/testDeleteCliente.xml"));
-        
+        ITable expectedTable = expectedDataSet.getTable("clienti");
         // Assert actual database table match expected table
-        Assertion.assertEquals(expectedDataSet, databaseDataSet);
+        Assertion.assertEquals(expectedTable, actualTable);
         
     }
     

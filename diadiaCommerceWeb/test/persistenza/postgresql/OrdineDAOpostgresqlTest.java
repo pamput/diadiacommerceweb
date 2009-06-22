@@ -8,7 +8,6 @@ package persistenza.postgresql;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Date;
-import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.List;
 import modello.*;
@@ -19,8 +18,6 @@ import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.xml.FlatXmlDataSet;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -50,7 +47,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine expResult = new OrdineProxy();
         Cliente cliente = new Cliente();
         cliente.setCodice(codiceOrdine);
-        cliente.setID(2);
+        cliente.setId(2);
         cliente.setIndirizzo("Via Dove");
         cliente.setNome("Marco Verdi");
         cliente.setPartitaiva("PIVA2");
@@ -58,7 +55,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         expResult.setCliente(cliente);
         expResult.setCodice("DUE");
         expResult.setData(new Date(1990,11,19));
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.getRigheOrdine();
         expResult.setStato("chiuso");
         Ordine result = instance.retrieveOrdineByCodice(codiceOrdine);
@@ -76,7 +73,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine expResult = new OrdineProxy();
         Cliente cliente = new Cliente();
         cliente.setCodice("DUE");
-        cliente.setID(idOrdine);
+        cliente.setId(idOrdine);
         cliente.setIndirizzo("Via Dove");
         cliente.setNome("Marco Verdi");
         cliente.setPartitaiva("PIVA2");
@@ -84,7 +81,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         expResult.setCliente(cliente);
         expResult.setCodice("DUE");
         expResult.setData(new Date(1990,11,19));
-        expResult.setID(2);
+        expResult.setId(2);
         expResult.getRigheOrdine();
         expResult.setStato("chiuso");
         Ordine result = instance.retrieveOrdineByID(idOrdine);
@@ -106,7 +103,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine ordine = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             ordine = new OrdineProxy();
-            ordine.setID((Integer)expTable.getValue(i, "id"));
+            ordine.setId((Integer)expTable.getValue(i, "id"));
             ordine.setCodice((String)expTable.getValue(i, "codice"));
             ordine.setData((Date)expTable.getValue(i, "data"));
             ordine.getRigheOrdine();
@@ -133,14 +130,14 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine ordine = null;
         for(int i = 0; i < expTable.getRowCount(); i++){
             ordine = new OrdineProxy();
-            ordine.setID((Integer)expTable.getValue(i, "id"));
+            ordine.setId((Integer)expTable.getValue(i, "id"));
             ordine.setCodice((String)expTable.getValue(i, "codice"));
             ordine.setData((Date)expTable.getValue(i, "data"));
             ordine.getRigheOrdine();
             ordine.setStato((String)expTable.getValue(i, "stato"));
             ClienteDAOpostgresql clienteDAO = new ClienteDAOpostgresql();
             ordine.setCliente(clienteDAO.retrieveClienteByID((Integer)expTable.getValue(i, "idcliente")));
-            if(ordine.getCliente().getID() == idCliente)
+            if(ordine.getCliente().getId() == idCliente)
                 expResult.add(ordine);
         }
         List<Ordine> result = instance.retrieveOrdineByIDCliente(idCliente);
@@ -156,7 +153,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine ordine = new OrdineProxy();
         ordine.setCodice("TRE");
         ordine.setData(new Date(103,03,04)); //Attenzione, problemi con la data
-        ordine.setID(3);
+        ordine.setId(3);
         ordine.setStato("aperto");
         ClienteDAOpostgresql clienteDAO = new ClienteDAOpostgresql();
         ordine.setCliente(clienteDAO.retrieveClienteByID(1));
@@ -179,7 +176,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         Ordine ordine = new OrdineProxy();
         ordine.setCodice("UNOMOD");
         ordine.setData(new Date(112,11,12)); //Attenzione, problemi con la data
-        ordine.setID(1);
+        ordine.setId(1);
         ordine.setStato("evaso");
         ClienteDAOpostgresql clienteDAO = new ClienteDAOpostgresql();
         ordine.setCliente(clienteDAO.retrieveClienteByID(1));
@@ -218,7 +215,7 @@ public class OrdineDAOpostgresqlTest extends DatabaseTestCase{
         System.out.println("evadiOrdine");
         Ordine ordine = new OrdineProxy();
         ordine.setCodice("DUE");
-        ordine.setID(2);
+        ordine.setId(2);
         ordine.setStato("chiuso");
         ClienteDAOpostgresql clienteDAO = new ClienteDAOpostgresql();
         ordine.setCliente(clienteDAO.retrieveClienteByID(2));

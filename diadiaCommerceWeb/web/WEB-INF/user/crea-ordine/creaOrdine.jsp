@@ -10,25 +10,21 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@ include file="/head.jsp" %>
         <title>Creazione Nuovo Ordine</title>
-        <link rel="stylesheet" type="text/css" href="./diadiacommerce.css" />
         <script type="text/javascript" language="Javascript" src="./javascript/script.js"></script>
-
-        <%@ page language="java" %>
-
-        <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-        <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-        <%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-
-        <%@ page import="modello.RigaOrdine, modello.Prodotto, web.form.RigaOrdineForm, java.util.List, modello.Ordine" %>
     </head>
+
     <body>
-        
-        <menu-top><jsp:include page="/menu.jsp"/></menu-top><br><br>
-            <div class="main-frame">
-        <h3>L'ordine è stato effettuato</h3>
-        Il suo ordine è stato registrato con successo. Può accedere ai dettagli dalla sua pagina utente.
+        <%@ include file="/menu.jsp" %>
+
+        <div class="main-frame">
+            <h3>L'ordine è stato effettuato</h3>
+            <b>Il suo ordine è stato registrato con successo. Può accedere ai dettagli dalla sua pagina utente.</b><br><br>
+
+            <html:link page="/homepage.do">
+                <button>Torna alla Homepage</button>
+            </html:link>
         </div>
     </body>
 </html>
