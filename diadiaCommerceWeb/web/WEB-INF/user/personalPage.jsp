@@ -30,7 +30,7 @@
 
             <b>Questi sono gli ordini da te effettuati:</b><br><br>
             <table>
-                <tr>
+                <tr class="header">
                     <td class="codice">Codice</td>
                     <td class="data">Data</td>
                     <td class="stato">Stato</td>

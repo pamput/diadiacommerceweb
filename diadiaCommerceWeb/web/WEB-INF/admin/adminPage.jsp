@@ -22,7 +22,7 @@
             <b>Questa è la lista degli ordini:</b><br><br>
             <center>
                 <table>
-                    <tr>
+                    <tr class="header">
                         <td class="codice">Codice</td>
                         <td class="cliente">Cliente</td>
                         <td class="data">Data</td>

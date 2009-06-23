@@ -29,7 +29,7 @@
             <b>Prodotti:</b><br><br>
             <center>
                 <table>
-                    <tr>
+                    <tr class="header">
                         <td class="prodotto">Prodotto</td>
                         <td class="quantita">Quantita</td>
                     </tr>
