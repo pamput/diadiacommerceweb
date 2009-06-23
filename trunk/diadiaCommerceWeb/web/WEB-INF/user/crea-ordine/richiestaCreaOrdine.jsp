@@ -12,7 +12,7 @@
     <head>
         <title>Creazione Nuovo Ordine</title>
         <%@ include file="/head.jsp" %>
-        <script type="text/javascript" language="Javascript" src="./javascript/script.js"/>
+        <script type="text/javascript" language="Javascript" src="./javascript/script.js"></script>
     </head>
 
     <body>
