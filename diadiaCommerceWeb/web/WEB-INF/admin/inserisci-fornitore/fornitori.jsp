@@ -22,28 +22,28 @@
             <h3>Elenco dei fornitori</h3><br>
 
             <center>
-                <tabella>
-                    <intestazione-tabella>
-                        <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="indirizzo">Indirizzo</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="telefono">Telefono</cella-intestazione-tabella>
-                    </intestazione-tabella>
+                <table>
+                    <tr>
+                        <td class="nome">Nome</td>
+                        <td class="indirizzo">Indirizzo</td>
+                        <td class="telefono">Telefono</td>
+                    </tr>
 
                     <!--Inizializza a 0 il contarore del logic iterate-->
                     <% int i = 0;%>
 
                     <logic:iterate id="fornitore" name="fornitori">
                         <!--Scrive il corpo del catalogo-->
-                        <corpo-tabella>
-                            <cella-corpo-tabella class="nome"><bean:write name="fornitore" property="nome" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="indirizzo"><bean:write name="fornitore" property="indirizzo" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="telefono"><bean:write name="fornitore" property="telefono" /></cella-corpo-tabella>
-                        </corpo-tabella>
+                        <tr>
+                            <td class="nome"><bean:write name="fornitore" property="nome" /></td>
+                            <td class="indirizzo"><bean:write name="fornitore" property="indirizzo" /></td>
+                            <td class="telefono"><bean:write name="fornitore" property="telefono" /></td>
+                        </tr>
 
                         <!--Incrementa il contatore del logic iterate-->
                         <% i++;%>
                     </logic:iterate>
-                </tabella>
+                </table>
             </center><br><br>
 
             <html:link page="/catalogoProdotti.do">

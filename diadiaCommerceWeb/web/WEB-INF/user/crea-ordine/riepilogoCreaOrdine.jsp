@@ -22,39 +22,39 @@
             <b>Riepilogo del nuovo ordine:</b><br><br>
 
             <center>
-                <tabella>
-                    <intestazione-tabella>
-                        <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="descrizione">Descrizione</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="prezzo">Prezzo</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="disponibili">Disponibili</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="ordinati">Ordinati</cella-intestazione-tabella>
-                    </intestazione-tabella>
+                <table>
+                    <tr>
+                        <td class="nome">Nome</td>
+                        <td class="codice">Codice</td>
+                        <td class="descrizione">Descrizione</td>
+                        <td class="prezzo">Prezzo</td>
+                        <td class="disponibili">Disponibili</td>
+                        <td class="ordinati">Ordinati</td>
+                    </tr>
 
                     <logic:iterate id="riga" name="listaRigaOrdine">
-                        <corpo-tabella>
-                            <cella-corpo-tabella class="nome">
+                        <tr>
+                            <td class="nome">
                                 <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="riga" paramProperty="prodotto.id">
                                     <bean:write name="riga" property="prodotto.nome" />
                                 </html:link>
-                            </cella-corpo-tabella>
-                            <cella-corpo-tabella class="codice"><bean:write name="riga" property="prodotto.codice" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="descrizione"><bean:write name="riga" property="prodotto.descrizione" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="prezzo">
+                            </td>
+                            <td class="codice"><bean:write name="riga" property="prodotto.codice" /></td>
+                            <td class="descrizione"><bean:write name="riga" property="prodotto.descrizione" /></td>
+                            <td class="prezzo">
                                 <bean:write name="riga" property="prodotto.prezzo" />
                                 <bean:message key="text.moneyvalue"/>
-                            </cella-corpo-tabella>
-                            <cella-corpo-tabella class="disponibili"><bean:write name="riga" property="prodotto.quantita" /></cella-corpo-tabella>
+                            </td>
+                            <td class="disponibili"><bean:write name="riga" property="prodotto.quantita" /></td>
 
                             <!-- cella del numero degli ordini -->
-                            <cella-corpo-tabella class="disponibili">
+                            <td class="disponibili">
                                 <bean:write name="riga" property="quantita" />
-                            </cella-corpo-tabella>
-                        </corpo-tabella>
+                            </td>
+                        </tr>
                     </logic:iterate>
 
-                </tabella>
+                </table>
             </center><br><br>
 
             <input type="button" onclick="javascript:history.back()" value="Annulla"/>

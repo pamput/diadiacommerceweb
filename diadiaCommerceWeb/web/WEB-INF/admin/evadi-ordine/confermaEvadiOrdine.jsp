@@ -28,30 +28,30 @@
 
             <b>Prodotti:</b><br><br>
             <center>
-                <tabella>
-                    <intestazione-tabella>
-                        <cella-intestazione-tabella class="prodotto">Prodotto</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="quantita">Quantita</cella-intestazione-tabella>
-                    </intestazione-tabella>
+                <table>
+                    <tr>
+                        <td class="prodotto">Prodotto</td>
+                        <td class="quantita">Quantita</td>
+                    </tr>
 
                     <!--Inizializza a 0 il contarore del logic iterate-->
                     <% int i = 0;%>
 
                     <logic:iterate id="riga" name="righeOrdine">
                         <!--Scrive il corpo della lista di ordini-->
-                        <corpo-tabella>
-                            <cella-corpo-tabella class="prodotto"><bean:write name="riga" property="prodotto" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="quantita"><bean:write name="riga" property="quantita" /></cella-corpo-tabella>
-                        </corpo-tabella>
+                        <tr>
+                            <td class="prodotto"><bean:write name="riga" property="prodotto" /></td>
+                            <td class="quantita"><bean:write name="riga" property="quantita" /></td>
+                        </tr>
 
                         <!--Incrementa il contatore del logic iterate-->
                         <% i++;%>
                     </logic:iterate>
-                </tabella>
+                </table>
             </center><br><br>
 
             <html:link page="/homepage.do">
-                <button>Torna alla Homepage</button>
+                Torna alla Homepage
             </html:link>
         </div>
     </body>

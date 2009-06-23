@@ -29,30 +29,30 @@
 
 
             <b>Questi sono gli ordini da te effettuati:</b><br><br>
-            <tabella>
-                <intestazione-tabella>
-                    <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
-                    <cella-intestazione-tabella class="data">Data</cella-intestazione-tabella>
-                    <cella-intestazione-tabella class="stato">Stato</cella-intestazione-tabella>
-                </intestazione-tabella>
+            <table>
+                <tr>
+                    <td class="codice">Codice</td>
+                    <td class="data">Data</td>
+                    <td class="stato">Stato</td>
+                </tr>
 
                 <!--Inizializza a 0 il contarore del logic iterate-->
                 <% int i = 0;%>
 
                 <logic:iterate id="ordine" name="ordini">
                     <!--Scrive il corpo della lista di ordini-->
-                    <corpo-tabella>
-                        <cella-corpo-tabella class="codice">
+                    <tr>
+                        <td class="codice">
                             <html:link action="dettaglioOrdine.do" paramId="idOrdine" paramName="ordine" paramProperty="id">
                                 <bean:write name="ordine" property="codice" />
                             </html:link>
-                        </cella-corpo-tabella>
-                        <cella-corpo-tabella class="data"><bean:write name="ordine" property="data" /></cella-corpo-tabella>
-                        <cella-corpo-tabella class="stato"><bean:write name="ordine" property="stato" /></cella-corpo-tabella>
-                    </corpo-tabella>
+                        </td>
+                        <td class="data"><bean:write name="ordine" property="data" /></td>
+                        <td class="stato"><bean:write name="ordine" property="stato" /></td>
+                    </tr>
                 </logic:iterate>
 
-            </tabella>
+            </table>
             <!--Rimuove la lista degli ordini dalla sessione-->
             <%session.removeAttribute("ordini");%>
         </div>

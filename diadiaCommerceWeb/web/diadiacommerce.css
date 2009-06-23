@@ -20,10 +20,6 @@ table{
     border: 1px;
     border-style:solid;
     
-    border-top-color: #1a6146;
-    border-bottom-color: #1a6146;
-    border-left-color: #1a6146;
-    border-right-color: #1a6146;
 }
 
 loggato-come{
@@ -92,30 +88,29 @@ tabella{
     
 }
 
-intestazione-tabella{
-
+tr{
     display:table-row;
     width:auto;
-    background-color: #5F9EA0;
     font-weight: bolder;
-    color: white;
+    border:solid;
 }
 
-cella-intestazione-tabella{
+td{
     display:table-cell;
     width:auto;
     padding:3px;
     font-size:small;
+    border:solid;
 }
 
-corpo-tabella{
+<tr>{
 
     display:table-row;
 
         
 }
 
-cella-corpo-tabella{
+td{
 
     display:table-cell;
     font-size:small;
@@ -123,7 +118,7 @@ cella-corpo-tabella{
     
 }
 
-cella-corpo-tabella.ordine{
+td.ordine{
 
     width:120px;
 

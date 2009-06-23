@@ -21,37 +21,37 @@
 
             <b>Questa è la lista degli ordini:</b><br><br>
             <center>
-                <tabella>
-                    <intestazione-tabella>
-                        <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="cliente">Cliente</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="data">Data</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="stato">Stato</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="evadi">Evadi</cella-intestazione-tabella>
-                    </intestazione-tabella>
+                <table>
+                    <tr>
+                        <td class="codice">Codice</td>
+                        <td class="cliente">Cliente</td>
+                        <td class="data">Data</td>
+                        <td class="stato">Stato</td>
+                        <td class="evadi">Evadi</td>
+                    </tr>
 
                     <!--Inizializza a 0 il contarore del logic iterate-->
                     <% int i = 0;%>
 
                     <logic:iterate id="ordine" name="ordini">
                         <!--Scrive il corpo della lista di ordini-->
-                        <corpo-tabella>
-                            <cella-corpo-tabella class="codice"><bean:write name="ordine" property="codice" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="cliente"><bean:write name="ordine" property="cliente" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="data"><bean:write name="ordine" property="data" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="stato"><bean:write name="ordine" property="stato" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="stato">
+                        <tr>
+                            <td class="codice"><bean:write name="ordine" property="codice" /></td>
+                            <td class="cliente"><bean:write name="ordine" property="cliente" /></td>
+                            <td class="data"><bean:write name="ordine" property="data" /></td>
+                            <td class="stato"><bean:write name="ordine" property="stato" /></td>
+                            <td class="stato">
                                 <logic:equal value="chiuso" name="ordine" property="stato">
                                     <html:link page="/richiestaEvadiOrdine.do" paramId="codiceOrdine" paramName="ordine" paramProperty="codice">Evadi</html:link>
                                 </logic:equal>
-                            </cella-corpo-tabella>
-                        </corpo-tabella>
+                            </td>
+                        </tr>
 
                         <!--Incrementa il contatore del logic iterate-->
                         <% i++;%>
                     </logic:iterate>
 
-                </tabella>
+                </table>
             </center><br><br>
 
             <!--Rimuove la lista degli ordini dalla sessione-->
