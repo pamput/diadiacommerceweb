@@ -25,7 +25,7 @@
             <html:form action="/riepilogoCreaOrdine.do" method="POST">
                 <center>
                     <table>
-                        <tr>
+                        <tr class="header">
                             <td class="nome">Nome</td>
                             <td class="codice">Codice</td>
                             <td class="descrizione">Descrizione</td>

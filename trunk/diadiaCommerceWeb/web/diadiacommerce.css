@@ -4,6 +4,27 @@ body{
     font-size:small;
 }
 
+a{
+    font-weight:bold;
+}
+
+a:link {
+        text-decoration: none;
+        color:#026366;
+    }
+
+a:visited {
+        text-decoration: none;
+        color:#026366;
+    }
+
+a:hover {
+        text-decoration: none;
+        color:#8cc1c3;
+    }
+
+
+
 h3{
 	font-size: 16px;
 	background-color: #5F9EA0;
@@ -14,12 +35,6 @@ h3{
 b{
     font-weight:bold;
     font-size: inherit;
-}
-
-table{
-    border: 1px;
-    border-style:solid;
-    
 }
 
 loggato-come{
@@ -74,7 +89,7 @@ div.main-frame{
 
 /* CreaOrdine */
 
-tabella{
+table{
 
     display:table;
     border: 1px;
@@ -88,12 +103,16 @@ tabella{
     
 }
 
-tr{
+tr.header{
+    
     display:table-row;
     width:auto;
     font-weight: bolder;
     border:solid;
+    background-color: #5F9EA0;
+    color: white;
 }
+
 
 td{
     display:table-cell;
@@ -101,21 +120,7 @@ td{
     padding:3px;
     font-size:small;
     border:solid;
-}
-
-<tr>{
-
-    display:table-row;
-
-        
-}
-
-td{
-
-    display:table-cell;
-    font-size:small;
-    padding:3px;
-    
+    border-width:0px;
 }
 
 td.ordine{

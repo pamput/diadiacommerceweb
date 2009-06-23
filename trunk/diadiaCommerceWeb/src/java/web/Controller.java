@@ -30,6 +30,8 @@ public class Controller extends org.apache.struts.tiles.TilesRequestProcessor{
         action2role.put("/riepilogoInserimentoProdotto.do", "admin");
         action2role.put("/richiestaInserimentoProdotto.do", "admin");
         action2role.put("/confermaInserimentoProdotto.do", "admin");
+        action2role.put("/richiestaEvadiOrdine.do", "admin");
+        action2role.put("/confermaEvadiOrdine.do", "admin");
         action2role.put("/personalPage.do", "user");
         action2role.put("/creaOrdine.do", "user");
     }

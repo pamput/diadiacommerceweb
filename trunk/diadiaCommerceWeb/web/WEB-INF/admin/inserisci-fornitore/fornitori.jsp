@@ -23,7 +23,7 @@
 
             <center>
                 <table>
-                    <tr>
+                    <tr class="header">
                         <td class="nome">Nome</td>
                         <td class="indirizzo">Indirizzo</td>
                         <td class="telefono">Telefono</td>
