@@ -178,7 +178,7 @@ CREATE SEQUENCE sequenzacodiceordine
 ALTER TABLE public.sequenzacodiceordine OWNER TO postgres;
 
 CREATE SEQUENCE sequenzarigheordine
-    START WITH 5
+    START WITH 16
     INCREMENT BY 1
     NO MAXVALUE
     NO MINVALUE
