@@ -24,57 +24,57 @@
 
             <html:form action="/riepilogoCreaOrdine.do" method="POST">
                 <center>
-                    <tabella>
-                        <intestazione-tabella>
-                            <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
-                            <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
-                            <cella-intestazione-tabella class="descrizione">Descrizione</cella-intestazione-tabella>
-                            <cella-intestazione-tabella class="prezzo">Prezzo</cella-intestazione-tabella>
-                            <cella-intestazione-tabella class="disponibili">Disponibili</cella-intestazione-tabella>
-                            <cella-intestazione-tabella class="ordinati">Ordinati</cella-intestazione-tabella>
-                        </intestazione-tabella>
+                    <table>
+                        <tr>
+                            <td class="nome">Nome</td>
+                            <td class="codice">Codice</td>
+                            <td class="descrizione">Descrizione</td>
+                            <td class="prezzo">Prezzo</td>
+                            <td class="disponibili">Disponibili</td>
+                            <td class="ordinati">Ordinati</td>
+                        </tr>
 
                         <%-- Questa variabile serve per l'indexing delle proprietà --%>
                         <% int i = 0;%>
 
                         <logic:iterate id="prodotto" name="catalogoProdottiDisponibili">
                             <!-- riga invisibile per visualizzare gli errori -->
-                            <corpo-tabella>
-                                <cella-corpo-tabella></cella-corpo-tabella>
-                                <cella-corpo-tabella></cella-corpo-tabella>
-                                <cella-corpo-tabella></cella-corpo-tabella>
-                                <cella-corpo-tabella></cella-corpo-tabella>
-                                <cella-corpo-tabella></cella-corpo-tabella>
-                                <cella-corpo-tabella><html:errors property='<%= "ordine[" + i + "]" %>'/></cella-corpo-tabella>
-                            </corpo-tabella>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><html:errors property='<%= "ordine[" + i + "]" %>'/></td>
+                            </tr>
 
-                            <corpo-tabella>
-                                <cella-corpo-tabella class="nome">
+                            <tr>
+                                <td class="nome">
                                     <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="prodotto" paramProperty="id">
                                         <bean:write name="prodotto" property="nome" />
                                     </html:link>
-                                </cella-corpo-tabella>
-                                <cella-corpo-tabella class="codice"><bean:write name="prodotto" property="codice" /></cella-corpo-tabella>
-                                <cella-corpo-tabella class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-tabella>
-                                <cella-corpo-tabella class="prezzo">
+                                </td>
+                                <td class="codice"><bean:write name="prodotto" property="codice" /></td>
+                                <td class="descrizione"><bean:write name="prodotto" property="descrizione" /></td>
+                                <td class="prezzo">
                                     <bean:write name="prodotto" property="prezzo" />
                                     <bean:message key="text.moneyvalue"/>
-                                </cella-corpo-tabella>
-                                <cella-corpo-tabella class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-tabella>
+                                </td>
+                                <td class="disponibili"><bean:write name="prodotto" property="quantita" /></td>
 
                                 <!-- cella del numero degli ordini -->
-                                <cella-corpo-tabella class="ordine">
+                                <td class="ordine">
                                     <input type="button"  onclick="javascript:decrementaDiUno('<%= "ordine" + i%>')" value="-" />
                                     <html:text name="RigaOrdineForm" property='<%= "ordine[" + i + "]" %>' size="2" styleId='<%= "ordine" + i %>' />
                                     <input type="button"  onclick="javascript:aumentaDiUno('<%= "ordine" + i%>')" value="+" />
-                                </cella-corpo-tabella>
+                                </td>
 
-                            </corpo-tabella>
+                            </tr>
 
                             <%-- Incrementa il parametro alla fine di ogni iterazione --%>
                             <% i++;%>
                         </logic:iterate>
-                    </tabella>
+                    </table>
                 </center><br><br>
                     
                 <html:submit property="submit" value="Conferma Ordine"/>

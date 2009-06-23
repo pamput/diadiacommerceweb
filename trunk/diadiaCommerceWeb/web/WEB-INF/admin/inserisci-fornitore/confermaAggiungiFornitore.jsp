@@ -29,7 +29,7 @@
             <b>Indirizzo:</b><bean:write name="fornitore" property="indirizzo" /><br><br>
 
             <html:link page="/catalogoProdotti.do">
-                <button>Torna al catologo prodotti</button>
+                Torna al catologo prodotti
             </html:link>
 
             <%session.removeAttribute("fornitore");

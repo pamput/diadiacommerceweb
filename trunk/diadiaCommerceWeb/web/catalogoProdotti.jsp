@@ -20,48 +20,48 @@
         <div class="main-frame">
             <h3>Prodotti in catalogo</h3><br>
             <center>
-                <tabella>
+                <table>
 
-                    <intestazione-tabella>
-                        <cella-intestazione-tabella class="nome">Nome</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="codice">Codice</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="descrizione">Descrizione</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="prezzo">Prezzo</cella-intestazione-tabella>
-                        <cella-intestazione-tabella class="disponibili">Disponibili</cella-intestazione-tabella>
+                    <tr>
+                        <td class="nome">Nome</td>
+                        <td class="codice">Codice</td>
+                        <td class="descrizione">Descrizione</td>
+                        <td class="prezzo">Prezzo</td>
+                        <td class="disponibili">Disponibili</td>
                         <logic:equal name="role" value="admin">
-                            <cella-intestazione-tabella class="fornitori">Fornitori</cella-intestazione-tabella>
+                            <td class="fornitori">Fornitori</td>
                         </logic:equal>
-                    </intestazione-tabella>
+                    </tr>
 
                     <!--Inizializza a 0 il contarore del logic iterate-->
                     <% int i = 0;%>
 
                     <logic:iterate id="prodotto" name="catalogoProdotti">
                         <!--Scrive il corpo del catalogo-->
-                        <corpo-tabella>
-                            <cella-corpo-tabella class="nome">
+                        <tr>
+                            <td class="nome">
                                 <html:link page="/dettaglioProdotto.do" paramId="idProdotto" paramName="prodotto" paramProperty="id"><bean:write name="prodotto" property="nome" /></html:link>
-                            </cella-corpo-tabella>
-                            <cella-corpo-tabella class="codice"><bean:write name="prodotto" property="codice" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="descrizione"><bean:write name="prodotto" property="descrizione" /></cella-corpo-tabella>
-                            <cella-corpo-tabella class="prezzo">
+                            </td>
+                            <td class="codice"><bean:write name="prodotto" property="codice" /></td>
+                            <td class="descrizione"><bean:write name="prodotto" property="descrizione" /></td>
+                            <td class="prezzo">
                                 <bean:write name="prodotto" property="prezzo" />
                                 <bean:message key="text.moneyvalue"/>
-                            </cella-corpo-tabella>
-                            <cella-corpo-tabella class="disponibili"><bean:write name="prodotto" property="quantita" /></cella-corpo-tabella>
+                            </td>
+                            <td class="disponibili"><bean:write name="prodotto" property="quantita" /></td>
 
                             <!--Se sta visualizzando la pagina un amministratore aggiunge la possibilta di mostrare i fornitori del prodotto-->
                             <logic:equal name="role" value="admin">
-                                <cella-corpo-tabella class="fornitori">
+                                <td class="fornitori">
                                     <html:link page="/richiestaFornitori.do" paramId="codiceProdotto" paramName="prodotto" paramProperty="codice">Visualizza</html:link>
-                                </cella-corpo-tabella>
+                                </td>
                             </logic:equal>
-                        </corpo-tabella>
+                        </tr>
 
                         <!--Incrementa il contatore del logic iterate-->
                         <% i++;%>
                     </logic:iterate>
-                </tabella>
+                </table>
             </center>
         </div>
     </body>

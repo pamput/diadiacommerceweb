@@ -23,7 +23,7 @@
             <b>Il suo ordine è stato registrato con successo. Può accedere ai dettagli dalla sua pagina utente.</b><br><br>
 
             <html:link page="/homepage.do">
-                <button>Torna alla Homepage</button>
+                Torna alla Homepage
             </html:link>
         </div>
     </body>
